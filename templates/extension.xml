@@ -1,0 +1,430 @@
+                <Extension>
+                    <HidePresence>False</HidePresence>
+                    <BusyDetection>UsePBXStatus</BusyDetection>
+                    <NoAnswerTimeout>0</NoAnswerTimeout>
+                    <OverrideExpiresAt>0001-01-01 00:00:00</OverrideExpiresAt>
+                    <SupportReplaces>True</SupportReplaces>
+                    <SupportReinvite>True</SupportReinvite>
+                    <EnableSRTP>False</EnableSRTP>
+                    <DeliverAudio>False</DeliverAudio>
+                    <Internal>False</Internal>
+                    <RecordCalls>False</RecordCalls>
+                    <OutboundCallerID>%%EXTOCID%%</OutboundCallerID>
+					<SIPID>%%EXTSIPID%%</SIPID>
+                    <QueueStatus>LoggedOut</QueueStatus>
+                    <UserStatus>Available</UserStatus>
+                    <VMEmailOptions>None</VMEmailOptions>
+                    <VMPIN>%%VMPIN%%</VMPIN>
+                    <VMPlayMsgDateTime>None</VMPlayMsgDateTime>
+                    <VMPlayCallerID>False</VMPlayCallerID>
+                    <VMEnabled>True</VMEnabled>
+                    <AuthPassword>%%EXTPWD%%</AuthPassword>
+                    <AuthID>%%EXTNUM%%</AuthID>
+                    <EmailAddress>%%EXTEMAIL%%</EmailAddress>
+                    <LastName>%%EXTLN%%</LastName>
+                    <FirstName>%%EXTFN%%</FirstName>
+                    <Enabled>True</Enabled>
+                    <Number>%%EXTNUM%%</Number>
+                    <Properties>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Blocks an extension from being registered outside the network</Description>
+                            <Value>1</Value>
+                            <Name>ALLOW_LAN_ONLY</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Deskphone password</Description>
+                            <Value>%%DESKPHONE_PASSWORD%%</Value>
+                            <Name>DESKPHONE_PASSWORD</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Enables Tunnel Connection</Description>
+                            <Value>1</Value>
+                            <Name>USETUNNEL</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Specifies password for access to the 3CX Phone System</Description>
+                            <Value>%%SERVICES_ACCESS_PASSWORD%%</Value>
+                            <Name>SERVICES_ACCESS_PASSWORD</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>If set to 1 - push notification is enabled</Description>
+                            <Value>1</Value>
+                            <Name>PUSH_EXTENSION</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>3cx provisioning file</Description>
+                            <Value>3cxProv_%%EXTPROVTS%%_%%EXTNUM%%.xml</Value>
+                            <Name>PROVFILE</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Unique identifier for 3CX phone provisioning</Description>
+                            <Value>%%EXTGUID%%</Value>
+                            <Name>EXTGUID</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Represents the options for office hours on the current extension</Description>
+                            <Value>1</Value>
+                            <Name>OFFICEHOURSPROPERTIES</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Xml with MyPhone provisioning info</Description>
+                            <Value>&lt;MyPhoneTemplateInfo&gt;&lt;LocalInterface&gt;&lt;/LocalInterface&gt;&lt;Codec&gt;PCMU&lt;/Codec&gt;&lt;Codec&gt;PCMA&lt;/Codec&gt;&lt;Codec&gt;G722&lt;/Codec&gt;&lt;Codec&gt;GSM&lt;/Codec&gt;&lt;/MyPhoneTemplateInfo&gt;</Value>
+                            <Name>MYPHONETEMPLATEINFO</Name>
+                        </DNProperty>
+                    </Properties>
+                    <FwdProfiles>
+                        <FwdProfile>
+                            <RingMyMobile>False</RingMyMobile>
+                            <BusyDetection>UsePBXStatus</BusyDetection>
+                            <NoAnswerTimeout>20</NoAnswerTimeout>
+                            <Name>Custom 2</Name>
+                            <DisableRingGroupCalls>True</DisableRingGroupCalls>
+                            <BlockPushCalls>False</BlockPushCalls>
+                            <ForceQueueStatus>0</ForceQueueStatus>
+                            <ForceInternal>-1</ForceInternal>
+                            <ForceChatStatus>-1</ForceChatStatus>
+                            <ForwardingRules>
+                                <ExtensionRule>
+                                    <RuleConditionGroup>
+                                        <CallType Type="InternalCallsOnly" />
+                                        <Condition Type="ForwardAll" />
+                                        <Hours Type="AllHours" />
+                                    </RuleConditionGroup>
+                                    <Destination>
+                                        <To>VoiceMail</To>
+                                        <Internal DN="%%EXTNUM%%" />
+                                    </Destination>
+                                </ExtensionRule>
+                                <ExtensionRule>
+                                    <RuleConditionGroup>
+                                        <CallType Type="ExternalCallsOnly" />
+                                        <Condition Type="ForwardAll" />
+                                        <Hours Type="AllHours" />
+                                    </RuleConditionGroup>
+                                    <Destination>
+                                        <To>VoiceMail</To>
+                                        <Internal DN="%%EXTNUM%%" />
+                                    </Destination>
+                                </ExtensionRule>
+                                <ExtensionRule>
+                                    <RuleConditionGroup>
+                                        <CallType Type="AllCalls" />
+                                        <Condition Type="ForwardAll" />
+                                        <Hours Type="AllHours" />
+                                    </RuleConditionGroup>
+                                    <Destination>
+                                        <To>VoiceMail</To>
+                                        <Internal DN="%%EXTNUM%%" />
+                                    </Destination>
+                                </ExtensionRule>
+                            </ForwardingRules>
+                        </FwdProfile>
+                        <FwdProfile>
+                            <RingMyMobile>False</RingMyMobile>
+                            <BusyDetection>UsePBXStatus</BusyDetection>
+                            <NoAnswerTimeout>20</NoAnswerTimeout>
+                            <Name>Out of office</Name>
+                            <DisableRingGroupCalls>True</DisableRingGroupCalls>
+                            <BlockPushCalls>False</BlockPushCalls>
+                            <ForceQueueStatus>0</ForceQueueStatus>
+                            <ForceInternal>-1</ForceInternal>
+                            <ForceChatStatus>-1</ForceChatStatus>
+                            <ForwardingRules>
+                                <ExtensionRule>
+                                    <RuleConditionGroup>
+                                        <CallType Type="InternalCallsOnly" />
+                                        <Condition Type="ForwardAll" />
+                                        <Hours Type="AllHours" />
+                                    </RuleConditionGroup>
+                                    <Destination>
+                                        <To>VoiceMail</To>
+                                        <Internal DN="%%EXTNUM%%" />
+                                    </Destination>
+                                </ExtensionRule>
+                                <ExtensionRule>
+                                    <RuleConditionGroup>
+                                        <CallType Type="ExternalCallsOnly" />
+                                        <Condition Type="ForwardAll" />
+                                        <Hours Type="AllHours" />
+                                    </RuleConditionGroup>
+                                    <Destination>
+                                        <To>VoiceMail</To>
+                                        <Internal DN="%%EXTNUM%%" />
+                                    </Destination>
+                                </ExtensionRule>
+                                <ExtensionRule>
+                                    <RuleConditionGroup>
+                                        <CallType Type="AllCalls" />
+                                        <Condition Type="ForwardAll" />
+                                        <Hours Type="AllHours" />
+                                    </RuleConditionGroup>
+                                    <Destination>
+                                        <To>VoiceMail</To>
+                                        <Internal DN="%%EXTNUM%%" />
+                                    </Destination>
+                                </ExtensionRule>
+                            </ForwardingRules>
+                        </FwdProfile>
+                        <FwdProfile>
+                            <RingMyMobile>False</RingMyMobile>
+                            <BusyDetection>UsePBXStatus</BusyDetection>
+                            <NoAnswerTimeout>20</NoAnswerTimeout>
+                            <Name>Away</Name>
+                            <DisableRingGroupCalls>True</DisableRingGroupCalls>
+                            <BlockPushCalls>False</BlockPushCalls>
+                            <ForceQueueStatus>0</ForceQueueStatus>
+                            <ForceInternal>-1</ForceInternal>
+                            <ForceChatStatus>-1</ForceChatStatus>
+                            <ForwardingRules>
+                                <ExtensionRule>
+                                    <RuleConditionGroup>
+                                        <CallType Type="InternalCallsOnly" />
+                                        <Condition Type="ForwardAll" />
+                                        <Hours Type="AllHours" />
+                                    </RuleConditionGroup>
+                                    <Destination>
+                                        <To>VoiceMail</To>
+                                        <Internal DN="%%EXTNUM%%" />
+                                    </Destination>
+                                </ExtensionRule>
+                                <ExtensionRule>
+                                    <RuleConditionGroup>
+                                        <CallType Type="ExternalCallsOnly" />
+                                        <Condition Type="ForwardAll" />
+                                        <Hours Type="AllHours" />
+                                    </RuleConditionGroup>
+                                    <Destination>
+                                        <To>VoiceMail</To>
+                                        <Internal DN="%%EXTNUM%%" />
+                                    </Destination>
+                                </ExtensionRule>
+                                <ExtensionRule>
+                                    <RuleConditionGroup>
+                                        <CallType Type="AllCalls" />
+                                        <Condition Type="ForwardAll" />
+                                        <Hours Type="AllHours" />
+                                    </RuleConditionGroup>
+                                    <Destination>
+                                        <To>VoiceMail</To>
+                                        <Internal DN="%%EXTNUM%%" />
+                                    </Destination>
+                                </ExtensionRule>
+                            </ForwardingRules>
+                        </FwdProfile>
+                        <FwdProfile>
+                            <RingMyMobile>False</RingMyMobile>
+                            <BusyDetection>UsePBXStatus</BusyDetection>
+                            <NoAnswerTimeout>20</NoAnswerTimeout>
+                            <Name>Custom 1</Name>
+                            <DisableRingGroupCalls>False</DisableRingGroupCalls>
+                            <BlockPushCalls>False</BlockPushCalls>
+                            <ForceQueueStatus>-1</ForceQueueStatus>
+                            <ForceInternal>-1</ForceInternal>
+                            <ForceChatStatus>-1</ForceChatStatus>
+                            <ForwardingRules>
+                                <ExtensionRule>
+                                    <RuleConditionGroup>
+                                        <CallType Type="AllCalls" />
+                                        <Condition Type="NoAnswer" />
+                                        <Hours Type="AllHours" />
+                                    </RuleConditionGroup>
+                                    <Destination>
+                                        <To>VoiceMail</To>
+                                        <Internal DN="%%EXTNUM%%" />
+                                    </Destination>
+                                </ExtensionRule>
+                                <ExtensionRule>
+                                    <RuleConditionGroup>
+                                        <CallType Type="AllCalls" />
+                                        <Condition Type="NoAnswer" />
+                                        <Hours Type="AllHours" />
+                                    </RuleConditionGroup>
+                                    <Destination>
+                                        <To>VoiceMail</To>
+                                        <Internal DN="%%EXTNUM%%" />
+                                    </Destination>
+                                </ExtensionRule>
+                                <ExtensionRule>
+                                    <RuleConditionGroup>
+                                        <CallType Type="AllCalls" />
+                                        <Condition Type="PhoneNotRegistered" />
+                                        <Hours Type="AllHours" />
+                                    </RuleConditionGroup>
+                                    <Destination>
+                                        <To>VoiceMail</To>
+                                        <Internal DN="%%EXTNUM%%" />
+                                    </Destination>
+                                </ExtensionRule>
+                                <ExtensionRule>
+                                    <RuleConditionGroup>
+                                        <CallType Type="AllCalls" />
+                                        <Condition Type="PhoneBusy" />
+                                        <Hours Type="AllHours" />
+                                    </RuleConditionGroup>
+                                    <Destination>
+                                        <To>VoiceMail</To>
+                                        <Internal DN="%%EXTNUM%%" />
+                                    </Destination>
+                                </ExtensionRule>
+                                <ExtensionRule>
+                                    <RuleConditionGroup>
+                                        <CallType Type="AllCalls" />
+                                        <Condition Type="PhoneNotRegistered" />
+                                        <Hours Type="AllHours" />
+                                    </RuleConditionGroup>
+                                    <Destination>
+                                        <To>VoiceMail</To>
+                                        <Internal DN="%%EXTNUM%%" />
+                                    </Destination>
+                                </ExtensionRule>
+                                <ExtensionRule>
+                                    <RuleConditionGroup>
+                                        <CallType Type="AllCalls" />
+                                        <Condition Type="PhoneBusy" />
+                                        <Hours Type="AllHours" />
+                                    </RuleConditionGroup>
+                                    <Destination>
+                                        <To>VoiceMail</To>
+                                        <Internal DN="%%EXTNUM%%" />
+                                    </Destination>
+                                </ExtensionRule>
+                            </ForwardingRules>
+                        </FwdProfile>
+                        <FwdProfile>
+                            <RingMyMobile>False</RingMyMobile>
+                            <BusyDetection>UsePBXStatus</BusyDetection>
+                            <NoAnswerTimeout>20</NoAnswerTimeout>
+                            <Name>Available</Name>
+                            <DisableRingGroupCalls>False</DisableRingGroupCalls>
+                            <BlockPushCalls>False</BlockPushCalls>
+                            <ForceQueueStatus>-1</ForceQueueStatus>
+                            <ForceInternal>-1</ForceInternal>
+                            <ForceChatStatus>-1</ForceChatStatus>
+                            <ForwardingRules>
+                                <ExtensionRule>
+                                    <RuleConditionGroup>
+                                        <CallType Type="AllCalls" />
+                                        <Condition Type="NoAnswer" />
+                                        <Hours Type="AllHours" />
+                                    </RuleConditionGroup>
+                                    <Destination>
+                                        <To>VoiceMail</To>
+                                        <Internal DN="%%EXTNUM%%" />
+                                    </Destination>
+                                </ExtensionRule>
+                                <ExtensionRule>
+                                    <RuleConditionGroup>
+                                        <CallType Type="AllCalls" />
+                                        <Condition Type="NoAnswer" />
+                                        <Hours Type="AllHours" />
+                                    </RuleConditionGroup>
+                                    <Destination>
+                                        <To>VoiceMail</To>
+                                        <Internal DN="%%EXTNUM%%" />
+                                    </Destination>
+                                </ExtensionRule>
+                                <ExtensionRule>
+                                    <RuleConditionGroup>
+                                        <CallType Type="AllCalls" />
+                                        <Condition Type="PhoneNotRegistered" />
+                                        <Hours Type="AllHours" />
+                                    </RuleConditionGroup>
+                                    <Destination>
+                                        <To>VoiceMail</To>
+                                        <Internal DN="%%EXTNUM%%" />
+                                    </Destination>
+                                </ExtensionRule>
+                                <ExtensionRule>
+                                    <RuleConditionGroup>
+                                        <CallType Type="AllCalls" />
+                                        <Condition Type="PhoneBusy" />
+                                        <Hours Type="AllHours" />
+                                    </RuleConditionGroup>
+                                    <Destination>
+                                        <To>VoiceMail</To>
+                                        <Internal DN="%%EXTNUM%%" />
+                                    </Destination>
+                                </ExtensionRule>
+                                <ExtensionRule>
+                                    <RuleConditionGroup>
+                                        <CallType Type="AllCalls" />
+                                        <Condition Type="PhoneNotRegistered" />
+                                        <Hours Type="AllHours" />
+                                    </RuleConditionGroup>
+                                    <Destination>
+                                        <To>VoiceMail</To>
+                                        <Internal DN="%%EXTNUM%%" />
+                                    </Destination>
+                                </ExtensionRule>
+                                <ExtensionRule>
+                                    <RuleConditionGroup>
+                                        <CallType Type="AllCalls" />
+                                        <Condition Type="PhoneBusy" />
+                                        <Hours Type="AllHours" />
+                                    </RuleConditionGroup>
+                                    <Destination>
+                                        <To>VoiceMail</To>
+                                        <Internal DN="%%EXTNUM%%" />
+                                    </Destination>
+                                </ExtensionRule>
+                            </ForwardingRules>
+                        </FwdProfile>
+                        <FwdProfile>
+                            <RingMyMobile>False</RingMyMobile>
+                            <BusyDetection>UsePBXStatus</BusyDetection>
+                            <NoAnswerTimeout>20</NoAnswerTimeout>
+                            <Name>Exceptions</Name>
+                            <DisableRingGroupCalls>False</DisableRingGroupCalls>
+                            <BlockPushCalls>False</BlockPushCalls>
+                            <ForceQueueStatus>-1</ForceQueueStatus>
+                            <ForceInternal>-1</ForceInternal>
+                            <ForceChatStatus>-1</ForceChatStatus>
+                        </FwdProfile>
+                        <FwdProfile>
+                            <RingMyMobile>False</RingMyMobile>
+                            <BusyDetection>UsePBXStatus</BusyDetection>
+                            <NoAnswerTimeout>0</NoAnswerTimeout>
+                            <Name>CustomHours</Name>
+                            <DisableRingGroupCalls>False</DisableRingGroupCalls>
+                            <BlockPushCalls>False</BlockPushCalls>
+                            <ForceQueueStatus>-1</ForceQueueStatus>
+                            <ForceInternal>-1</ForceInternal>
+                            <ForceChatStatus>-1</ForceChatStatus>
+                            <ForwardingRules>
+                                <ExtensionRule>
+                                    <RuleConditionGroup>
+                                        <CallType Type="AllCalls" />
+                                        <Condition Type="ForwardAll" />
+                                        <Hours Type="SpecificHoursExcludingHolidays" />
+                                    </RuleConditionGroup>
+                                    <Destination>
+                                        <To>None</To>
+                                    </Destination>
+                                </ExtensionRule>
+                                <ExtensionRule>
+                                    <RuleConditionGroup>
+                                        <CallType Type="AllCalls" />
+                                        <Condition Type="ForwardAll" />
+                                        <Hours Type="SpecificHoursExcludingHolidays" />
+                                    </RuleConditionGroup>
+                                    <Destination>
+                                        <To>None</To>
+                                    </Destination>
+                                </ExtensionRule>
+                            </ForwardingRules>
+                        </FwdProfile>
+                    </FwdProfiles>
+                    <FallbackProfile />
+                    <CurrentProfile>Available</CurrentProfile>
+                    <OverrideProfile />
+                </Extension>
+                

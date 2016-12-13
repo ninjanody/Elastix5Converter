@@ -1,0 +1,6 @@
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Description>%%BLACKLIST_NAME%%</Description>
+                    <Value>%%BLACKLIST_NUM%%</Value>
+                    <Name>BLACKLIST_%%BLACKLIST_INDEX%%</Name>
+                </TenantProperty>

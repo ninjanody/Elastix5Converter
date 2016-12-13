@@ -1,0 +1,117 @@
+                <ExternalLine>
+                    <DIDNumbers>%%TRUNK_DIDS%%</DIDNumbers>
+                    <AnswerAfter>0</AnswerAfter>
+                    <Direction>Both</Direction>
+                    <SimultaneousCalls>%%TRUNK_MAXCALLS%%</SimultaneousCalls>
+                    <OutboundCallerID>%%TRUNK_OCID%%</OutboundCallerID>
+                    <ExternalNumber>%%TRUNK_DIDS%%</ExternalNumber>
+                    <AuthPassword>%%TRUNK_AUTHPWD%%</AuthPassword>
+                    <AuthID>%%TRUNK_AUTHID%%</AuthID>
+                    <Number>%%TRUNK_VNUM%%</Number>
+                    <Properties>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Allows direct call from IVR</Description>
+                            <Value>1</Value>
+                            <Name>DIRECT_FROM_IVR</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Specify if this VoIP Providers uses 3 way authentication.</Description>
+                            <Value>0</Value>
+                            <Name>USESEPARATEAUTHID</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Used for VoIP Providers that support 3 way authentication.</Description>
+                            <Name>SEPARATEAUTHID</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Disable video media for calls which are bound to media server</Description>
+                            <Value>1</Value>
+                            <Name>DISABLE_VIDEO_CALLS</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Specify if the current PBX can send information to the remote 3CX PBX</Description>
+                            <Value>0</Value>
+                            <Name>REMOTEPBX_PUBLISH</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Specify if the current PBX can receive information from the remote 3CX PBX</Description>
+                            <Value>0</Value>
+                            <Name>REMOTEPBX_RECEIVE</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Specifies the extensions that can view this PBX connection</Description>
+                            <Name>REMOTEPBX_USERS</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Specifies the prefix needed to reach the remote PBX</Description>
+                            <Name>REMOTEPBX_PREFIX</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Tunnel remote address</Description>
+                            <Name>TUNNEL_REMOTE_ADDR</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Tunnel remote port</Description>
+                            <Value>0</Value>
+                            <Name>TUNNEL_REMOTE_PORT</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Enable tunnel</Description>
+                            <Value>0</Value>
+                            <Name>ENABLE_TUNNEL</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Specifies the inbound caller id formatting</Description>
+                            <Value>&lt;Rules /&gt;</Value>
+                            <Name>INBOUNDCALLERID</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Specifies the outbound caller id formatting</Description>
+                            <Value>&lt;Rules /&gt;</Value>
+                            <Name>OUTBOUNDCALLERID</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Value>1481039179</Value>
+                            <Name>REGISTER_SENT_TIME</Name>
+                        </DNProperty>
+                    </Properties>
+                    <Gateway>%%TRUNK_NAME%%</Gateway>
+                    <RoutingRules>
+                        <ExternalLineRule>
+                            <RuleConditionGroup>
+                                <CallType Type="AllCalls" />
+                                <Condition Type="ForwardAll" />
+                                <Hours Type="OfficeHours" />
+                            </RuleConditionGroup>
+                            <Destination>
+                                <To>Extension</To>
+                                <Internal DN="%%OPERATOR%%" />
+                            </Destination>
+                        </ExternalLineRule>
+                        <ExternalLineRule>
+                            <RuleConditionGroup>
+                                <CallType Type="AllCalls" />
+                                <Condition Type="ForwardAll" />
+                                <Hours Type="OutOfOfficeHours" />
+                            </RuleConditionGroup>
+                            <Destination>
+                                <To>Extension</To>
+                                <Internal DN="%%OPERATOR%%" />
+                            </Destination>
+                        </ExternalLineRule>
+                    </RoutingRules>
+                </ExternalLine>

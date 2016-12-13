@@ -1,0 +1,5 @@
+                        <IVRForward>
+                            <ForwardType>%%IVR_DEST_TYPE%%</ForwardType>
+                            <Number>%%IVR_KEY%%</Number>
+							<ForwardDN>%%IVR_DEST_NUM%%</ForwardDN>
+                        </IVRForward>

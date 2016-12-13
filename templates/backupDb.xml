@@ -1,0 +1,3085 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PhoneSystem>
+    <header>
+        <version>14.0.0.0</version>
+        <Date>12/5/16 2:44:05 PM</Date>
+        <TenantName></TenantName>
+    </header>
+    <GlobalParameters>
+        <gparam name="INST_AUTODELETE_RECORDINGS" value="0" />
+        <gparam name="INST_AUTODELETE_VOICEMAIL" value="0" />
+        <gparam name="INST_QUOTA_RECORDINGS" value="5" />
+        <gparam name="INST_QUOTA_VMBOX" value="5" />
+    </GlobalParameters>
+    <Parameters>
+        <Parameter>
+            <Value>*0</Value>
+            <Type>String</Type>
+            <Description>Park dial code</Description>
+            <Name>PARK</Name>
+        </Parameter>
+        <Parameter>
+            <Value>%%DIALCODE_UNPARK%%</Value>
+            <Type>String</Type>
+            <Description>Unpark dial code</Description>
+            <Name>UNPARK</Name>
+        </Parameter>
+        <Parameter>
+            <Value>*777</Value>
+            <Type>String</Type>
+            <Description>Echo Test Extension used to test echo, delay and round trip timing</Description>
+            <Name>ECHOTEST</Name>
+        </Parameter>
+        <Parameter>
+            <Value>*888</Value>
+            <Type>String</Type>
+            <Description>Echo Test Extension used to test echo by making callback</Description>
+            <Name>CBTEST</Name>
+        </Parameter>
+        <Parameter>
+            <Value>%%FAXOVEREMAILGATEWAY%%</Value>
+            <Type>String</Type>
+            <Description>The default 3cx fax extension. The fax over mail extension</Description>
+            <Name>FAXOVEREMAILGATEWAY</Name>
+        </Parameter>
+        <Parameter>
+            <Value>700*</Value>
+            <Type>String</Type>
+            <Description>Dial code to access conference gateway service</Description>
+            <Name>DIALCODECONFGATEWAY</Name>
+        </Parameter>
+        <Parameter>
+            <Value>8210986B-9412-497f-AD77-3A554F4A9BDB</Value>
+            <Type>String</Type>
+            <Description>The name of currently active prompts set</Description>
+            <Name>ACPRMSET</Name>
+        </Parameter>
+        <Parameter>
+            <Value>http://www.notused.invalidtld</Value>
+            <Type>String</Type>
+            <Description>URL used for alert info so the phone can download the required ring tones from this url</Description>
+            <Name>ALERT_INFO_URL</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1</Value>
+            <Type>Int32</Type>
+            <Description>Allow takeover of established calls using Re-invites with replaces. Available options 0 off and 1 on</Description>
+            <Name>ALLOW_CALL_TAKEOVER</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1</Value>
+            <Type>String</Type>
+            <Description>Allows members of ring groups and queue to forward calls to external numbers. Requires that the gateway must be able to accept a call ONLY when the callee has answered - Early media OFF. Default enabled</Description>
+            <Name>ALLOWFWDTOEXTFROMGRP</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1</Value>
+            <Type>String</Type>
+            <Description>Allows PBX to use advanced SDP re-negotiation improving audio and video codec matching in call transfer scenarios. Works only when PBX delivers audio is enabled and both parties must support re-invites. Available options 0 disabled 1 enabled</Description>
+            <Name>ALLOWNOSDPIFBOUNDTOMS</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1</Value>
+            <Type>String</Type>
+            <Description>Used only for remote extensions. If 1 (on) PBX saves the source IP:port of last successful OK to REGISTER message and constructs target requests to that IP:port, except those that have FQDN as target. If set to 0, ACK will be sent to IP:port specified in Contact header of 200/INV</Description>
+            <Name>ALLOWSOURCEASOUTBOUND</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>Used only for VOIPProviders. Default 0 If 1 (on) PBX saves the source IP:port of last successful OK to REGISTER message and constructs target requests to that IP:port, except those that have FQDN as target. If provider needs this to 1 to work, then this provider is unreliable</Description>
+            <Name>ALLOWSOURCEASOUTBOUNDVP</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>="1" will enable use of phone 'Busy' status instead of 'PBX status' for members of ring groups</Description>
+            <Name>ALLOWUSEBUSYOPTFORGROUP</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>If set to 1, PBX will perform various consistency checks on VoIP Packets, and report results in server activity log. Useful when troubleshooting remote extensions</Description>
+            <Name>ANALYSEVOIPPACKETS</Name>
+        </Parameter>
+        <Parameter>
+            <Value>gateway.push.apple.com</Value>
+            <Type>String</Type>
+            <Description>FQDN of APPLE APNS Push Service</Description>
+            <Name>APNS_HOST</Name>
+        </Parameter>
+        <Parameter>
+            <Value>2195</Value>
+            <Type>String</Type>
+            <Description>Port of APPLE APNS Push Service</Description>
+            <Name>APNS_PORT</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1</Value>
+            <Type>String</Type>
+            <Description>enable</Description>
+            <Name>APPENDCIDQUEUE</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1</Value>
+            <Type>String</Type>
+            <Description>Parameter to attach 3cxconfig provisioning file to 3CX welcome email used to automatically configure 3CXPhone. Available options 0 off and 1 on</Description>
+            <Name>ATTACH_3CXCONFIG_WELCOMEEMAIL</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>3CX Audio Service provider will dynamically adjust the volume of the stream in quiet parts to the level specified by parameter AUDIO_PROVIDER_MAX_VOLUME. Default value is 0 Disabled. Set to 1 to enable this option</Description>
+            <Name>AUDIO_PROVIDER_ENABLE_AUTOGAIN</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>Normalizes volume of the audio stream produced from Line in or Audio Playlist in case the audio files used do not have equal volume. Allows values are numeric and specify a percentage. Default is 0 - disabled. Example set to 25 to get -12dB</Description>
+            <Name>AUDIO_PROVIDER_MAX_VOLUME</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>This parameter tells the billing module to round up to the next unit specified. Default behavior is blank. If it is set to 5 and BILLINGROUNDUP is 0, billing will round up to the next 5 seconds. If BILLINGROUNDUP is 1, then BILLFREQUENCY value is in minutes</Description>
+            <Name>BILLFREQUENCY</Name>
+        </Parameter>
+        <Parameter>
+            <Value>**</Value>
+            <Type>String</Type>
+            <Description>BillingCode dial code</Description>
+            <Name>BILLINGCODE</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>Used to notify other applications when billing changes</Description>
+            <Name>BILLINGNOTIFIER</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>This controls whether the rounding up for billing will be made in minutes or in seconds. Default behavior is blank. Available options are 0 for seconds and 1 for minutes</Description>
+            <Name>BILLINGROUNDUP</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>The dummy parameter used for black list change event</Description>
+            <Name>BLACKLISTCHANGED</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>Ignores failed authentication requests originating from tunnelled connections</Description>
+            <Name>BLOCKREMOTETUNNEL</Name>
+        </Parameter>
+        <Parameter>
+            <Value>5</Value>
+            <Type>String</Type>
+            <Description>Boomerang acceptor timeout in seconds</Description>
+            <Name>BMACCEPTTOUT</Name>
+        </Parameter>
+        <Parameter>
+            <Value>30</Value>
+            <Type>String</Type>
+            <Description>Boomerang caller timeout in seconds</Description>
+            <Name>BMCALLTOUT</Name>
+        </Parameter>
+        <Parameter>
+            <Value>974</Value>
+            <Type>String</Type>
+            <Description>Build version</Description>
+            <Name>BUILD</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>Replaces busy tone with Busy prompt. This will answer the call. 0 = busy signal on busy. 1 = Busy prompt played out when busy</Description>
+            <Name>BUSYPROMPT</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1</Value>
+            <Type>String</Type>
+            <Name>BXFERLEAVEBINDING</Name>
+        </Parameter>
+        <Parameter>
+            <Value>60</Value>
+            <Type>String</Type>
+            <Description>Time interval in seconds in which Transferer will track status of blind transfer. If transfer will not be completed during this time, the transferer will be removed from the call and the result will depend only on the destination</Description>
+            <Name>CALL_TRANSFER_TRACKING_TIME</Name>
+        </Parameter>
+        <Parameter>
+            <Value>38876</Value>
+            <Type>String</Type>
+            <Description>Current Version of the Call assistant Server</Description>
+            <Name>CALLASSISTANTVERSION</Name>
+        </Parameter>
+        <Parameter>
+            <Value>-1</Value>
+            <Type>Int32</Type>
+            <Description>Maximal length of number for call by name</Description>
+            <Name>CALLBYNAME_MAXLEN</Name>
+        </Parameter>
+        <Parameter>
+            <Value>3</Value>
+            <Type>Int32</Type>
+            <Description>Minimal length of number for call by name</Description>
+            <Name>CALLBYNAME_MINLEN</Name>
+        </Parameter>
+        <Parameter>
+            <Value>5</Value>
+            <Type>String</Type>
+            <Description>callhistory Interval in seconds for processing iteration</Description>
+            <Name>CALLHISTITERIVL</Name>
+        </Parameter>
+        <Parameter>
+            <Value>-h3</Value>
+            <Type>String</Type>
+            <Name>CALLHISTMODE</Name>
+        </Parameter>
+        <Parameter>
+            <Value>true</Value>
+            <Type>String</Type>
+            <Description>Flag to write callhistory to Database or not</Description>
+            <Name>CALLHISTTODB</Name>
+        </Parameter>
+        <Parameter>
+            <Value>true</Value>
+            <Type>String</Type>
+            <Description>Flag true=1 file per Week or false=per day</Description>
+            <Name>CALLHISTWEEKLY</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>Enable Calendar Profile Switching</Description>
+            <Name>CDM_EX_CAL_ENABLED</Name>
+        </Parameter>
+        <Parameter>
+            <Value>+</Value>
+            <Type>String</Type>
+            <Description>Convert + to any value for contacts received from MS Exchange</Description>
+            <Name>CDM_EX_CONVERT</Name>
+        </Parameter>
+        <Parameter>
+            <Value>False</Value>
+            <Type>String</Type>
+            <Description>Option to sync the first 100 Global Address Book Users from MS Exchange</Description>
+            <Name>CDM_EX_GAL</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>User Accounts to sync from MS Exchange</Description>
+            <Name>CDM_EX_MAIL</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>Impersonated User Password</Description>
+            <Name>CDM_EX_PASS</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>Public Folders to sync from MS Exchange</Description>
+            <Name>CDM_EX_PUB</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0400</Value>
+            <Type>String</Type>
+            <Description>Time when syncronization will occur from MS Exchange. Default 4AM</Description>
+            <Name>CDM_EX_TIME</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>MS Exchange OWA URL</Description>
+            <Name>CDM_EX_URL</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>Impersonated User Account</Description>
+            <Name>CDM_EX_USER</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>Version of MS Exchange Server</Description>
+            <Name>CDM_EX_VERSION</Name>
+        </Parameter>
+        <Parameter>
+            <Value>+</Value>
+            <Type>String</Type>
+            <Description>Convert found values starting with a + to string</Description>
+            <Name>CDM_LDAP_CONVERT</Name>
+        </Parameter>
+        <Parameter>
+            <Value>389</Value>
+            <Type>String</Type>
+            <Description>Port of LDAP server. Default: 389 for MS Ldap</Description>
+            <Name>CDM_LDAP_PORT</Name>
+        </Parameter>
+        <Parameter>
+            <Value>365</Value>
+            <Type>String</Type>
+            <Description>Time after the contact will be deleted automatically</Description>
+            <Name>CDM_LDAP_TTL</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>First LDAP then SQL= 0; First SQL then LDAP=1</Description>
+            <Name>CDM_LOOKUP_ORDER</Name>
+        </Parameter>
+        <Parameter>
+            <Value>DSN=</Value>
+            <Type>String</Type>
+            <Name>CDM_SQL_STRING</Name>
+        </Parameter>
+        <Parameter>
+            <Value>365</Value>
+            <Type>String</Type>
+            <Name>CDM_SQL_TTL</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1</Value>
+            <Type>String</Type>
+            <Description>Algorithm to check for infinite system routing loops. If set to 1 Internal call history will be used for loop detection. If set to 0 loop detection works for forward all type rules</Description>
+            <Name>CHECK_CALL_DIVERSION_LOOP</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0000</Value>
+            <Type>String</Type>
+            <Description>Default Password Pin number for authentication for new created conferences Default value 0000</Description>
+            <Name>CONFERENCEEXTPIN</Name>
+        </Parameter>
+        <Parameter>
+            <Value>4</Value>
+            <Type>String</Type>
+            <Description>Controls the length of digits to generate the access PIN code to join a scheduled conference. Default value is 4</Description>
+            <Name>CONFPINLENGTH</Name>
+        </Parameter>
+        <Parameter>
+            <Value>/var/lib/3cxpbx/Instance1/Data/Ivr/Prompts/onhold.wav</Value>
+            <Type>String</Type>
+            <Name>CONFPLACE_MOH_SOURCE</Name>
+        </Parameter>
+        <Parameter>
+            <Value>United States</Value>
+            <Type>String</Type>
+            <Description>Country name for the country index</Description>
+            <Name>COUNTRYINDEXNAME</Name>
+        </Parameter>
+        <Parameter>
+            <Value>Lunch</Value>
+            <Type>String</Type>
+            <Description>Allows ability to change the mapping from Profile Available 2 to something else</Description>
+            <Name>CUSTOM1NAME</Name>
+        </Parameter>
+        <Parameter>
+            <Value>Business Trip</Value>
+            <Type>String</Type>
+            <Description>Allows ability to change the mapping from Profile Out Of Office 2 to something else</Description>
+            <Name>CUSTOM2NAME</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>This will enable a DN property table in the advanced settings used for developers only. Available options Default 0 disabled 1 enabled</Description>
+            <Name>DEVELOPMENT_DNTABLE_EXPOSE</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Name>DIALCODE_PWD</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>Deactivate Office Hours - Calendar settings and time used as set in the global Office hours in Settings/General.*641 IN Office *642 OUT OF Office irrespective of current time</Description>
+            <Name>DIALCODEOUTOFFICE</Name>
+        </Parameter>
+        <Parameter>
+            <Value>*3</Value>
+            <Type>String</Type>
+            <Description>Change profile using dial code Default *3. Options *30 Available *31 Away *32 OutOfOffice *33 Custom1 *34 Custom2</Description>
+            <Name>DIALCODEPROFILE</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>Disables Outbound Calls in VP, Bridges, Gateways when Out of office hours is triggered. If 0 feature is disabled. If set to 1 Feature is enabled. Default 0</Description>
+            <Name>DISABLE_OUTBOUND_IN_OOH</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>This option controls authentication of INVITE requests from IVR (makecall), Queue (polling call) and Paging group (intercom call to member of paging group). 0 (default)=requires authentication. 1=does not require authentication</Description>
+            <Name>DISABLE_SYSCALL_AUTH</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>Available options 0 and 1. 0=PBX will allow transfer request to a busy parking place. 1=PBX will reject transfer request to a busy parking place</Description>
+            <Name>DISALLOWREFERTOBUSYSP</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>DST option</Description>
+            <Name>DST</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>The dummy parameter used for office hours change event</Description>
+            <Name>DUMMYGLOBALOFFHOURSEV</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1</Value>
+            <Type>String</Type>
+            <Description>Enables the Conference Server Password Pin for authentication for new created conferences Default Off 0/On 1</Description>
+            <Name>ENABLECONFERENCEPIN</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1</Value>
+            <Type>String</Type>
+            <Description>Switch off Early Media Support on 1 or off 0</Description>
+            <Name>ENABLEEARLYMEDIA</Name>
+        </Parameter>
+        <Parameter>
+            <Value>%%ENL%%</Value>
+            <Type>Int32</Type>
+            <Description>Extension number length</Description>
+            <Name>ENL</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>Expiry Grace Period</Description>
+            <Name>EXPIRATIONGRACEPERIOD</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>This prefix (outbound rule) will be added to dialled outgoing numbers from extensions for INTERNATIONAL formatted calls</Description>
+            <Name>EXT_REFMT_INTL_PREFIX</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>This prefix (outbound rule) will be added to dialled outgoing numbers from extensions for LOCAL formatted calls</Description>
+            <Name>EXT_REFMT_LOCAL_PREFIX</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>This prefix (outbound rule) will be added to dialled outgoing numbers from extensions for NATIONAL formatted calls</Description>
+            <Name>EXT_REFMT_NATL_PREFIX</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1</Value>
+            <Type>String</Type>
+            <Description>Notify the User when Extension is Added</Description>
+            <Name>EXTCRNOTIFY</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1</Value>
+            <Type>String</Type>
+            <Description>modifies behavior of SDP negotiation when the FAX extension is the destination</Description>
+            <Name>FAXDIRECTSDP</Name>
+        </Parameter>
+        <Parameter>
+            <Value>60000</Value>
+            <Type>String</Type>
+            <Description>First port to use for external calls</Description>
+            <Name>FIRSTEXTPORT</Name>
+        </Parameter>
+        <Parameter>
+            <Value>55000</Value>
+            <Type>String</Type>
+            <Description>First port to use for internal calls</Description>
+            <Name>FIRSTLOCALPORT</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1</Value>
+            <Type>String</Type>
+            <Description>forces PBX to re-request authentication if it has nonce that has already been used.  If value = 1, PBX will force the check. If set to 0 - PBX will not check reuse of nonce</Description>
+            <Name>FORCEREAUTH</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>GOOGLE GCM Google cloud messaging Push Service authentication key. Should be in the format key=followed by key from google account</Description>
+            <Name>GCM_AUTH</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>GOOGLE GCM Google cloud messaging Push Service sender ID</Description>
+            <Name>GCM_SENDERID</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Name>GLOBAL_CHANGE</Name>
+        </Parameter>
+        <Parameter>
+            <Value>*5</Value>
+            <Type>String</Type>
+            <Description>Block Outbound Caller ID</Description>
+            <Name>HIDECALLERID</Name>
+        </Parameter>
+        <Parameter>
+            <Value>Private Number</Value>
+            <Type>String</Type>
+            <Description>This information will be send in the INVITE instead of the Outbound Caller ID Information, Used in conjunction with HIDECALLERID parameter</Description>
+            <Name>HIDECALLERIDINFO</Name>
+        </Parameter>
+        <Parameter>
+            <Value>%%DIALCODE_INTERCOM%%</Value>
+            <Type>String</Type>
+            <Description>Intercom dial code</Description>
+            <Name>INTERCOM</Name>
+        </Parameter>
+        <Parameter>
+            <Value>/var/lib/3cxpbx/Instance1/Data/Ivr/Prompts/onhold.wav</Value>
+            <Type>String</Type>
+            <Name>IVR_MOH_SOURCE</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Name>IVR_USEBK_MUSIC</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>Comma separated list of extensions , numbers including ranges that will not be allowed for dialing from all IVR in 3CX. Default empty</Description>
+            <Name>IVRDONOTCALL</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>If set to 0 IVR will block calls to extensions that do not exist in the system. If set to 1, IVR will allow calls to extensions that do not exist and they will be processed through the outbound rules</Description>
+            <Name>IVRNOCHECKFORDN</Name>
+        </Parameter>
+        <Parameter>
+            <Value>30</Value>
+            <Type>String</Type>
+            <Description>Controls interval in seconds that keepalives will be sent. Default is 30 seconds</Description>
+            <Name>KEEPALIVE_TIME_UDP</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>Int32</Type>
+            <Description>Allow 3CX to send keep alives to a VoIP provider and is used in situations were static port mappings are not possible.</Description>
+            <Name>KEEPALIVEENABLED</Name>
+        </Parameter>
+        <Parameter>
+            <Value>en</Value>
+            <Type>Int32</Type>
+            <Description>Installation language code</Description>
+            <Name>LANGUAGE</Name>
+        </Parameter>
+        <Parameter>
+            <Value>64999</Value>
+            <Type>String</Type>
+            <Description>Last port to use for external calls</Description>
+            <Name>LASTEXTPORT</Name>
+        </Parameter>
+        <Parameter>
+            <Value>59999</Value>
+            <Type>String</Type>
+            <Description>Last port to use for internal calls</Description>
+            <Name>LASTLOCALPORT</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>Only extensions from group can pickup the call.</Description>
+            <Name>LIMIT_PICKUP_TO_GROUP</Name>
+        </Parameter>
+        <Parameter>
+            <Value>10.0.0.0/8,169.254.0.0/16,172.16.0.0/12,192.168.0.0/16</Value>
+            <Type>String</Type>
+            <Description>Default Local Subnets reserved for Private Networks by the IETF and IANA RFC1918</Description>
+            <Name>LOCALSUBNETS</Name>
+        </Parameter>
+        <Parameter>
+            <Value>*62</Value>
+            <Type>String</Type>
+            <Description>LoggedInQueue dial code</Description>
+            <Name>LOGGEDINQUEUE</Name>
+        </Parameter>
+        <Parameter>
+            <Value>*63</Value>
+            <Type>String</Type>
+            <Description>LoggedOutQueue dial code</Description>
+            <Name>LOGGEDOUTQUEUE</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>Sends an email notification to the administrator when a system extension has logged in to Management Console</Description>
+            <Name>LOGINOUTEVENT</Name>
+        </Parameter>
+        <Parameter>
+            <Value>30</Value>
+            <Type>String</Type>
+            <Description>Interval in minutes to check for logs that can be deleted or moved to backup folder. Default 30 minutes</Description>
+            <Name>MAINTENANCE_CHECK_INTERVAL</Name>
+        </Parameter>
+        <Parameter>
+            <Value>03:30:00</Value>
+            <Type>String</Type>
+            <Description>Time of backup logs cleanup task in format HH:mm:ss</Description>
+            <Name>MAINTENANCE_CLEANUP_TIME</Name>
+        </Parameter>
+        <Parameter>
+            <Value>2</Value>
+            <Type>String</Type>
+            <Description>Minimum number of 3CX Phone System Binary log files to keep in the log folder</Description>
+            <Name>MAINTENANCE_CMBINLOG_MAXFILES</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1</Value>
+            <Type>Int32</Type>
+            <Description>Number of days to keep backup logs</Description>
+            <Name>MAINTENANCE_KEEP_DAYS</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1</Value>
+            <Type>String</Type>
+            <Description>Keep backup of log files</Description>
+            <Name>MAINTENANCE_KEEP_LOGS</Name>
+        </Parameter>
+        <Parameter>
+            <Value>10800</Value>
+            <Type>String</Type>
+            <Name>MAXCALLDURATION</Name>
+        </Parameter>
+        <Parameter>
+            <Value>300</Value>
+            <Type>String</Type>
+            <Description>This is the maximum timeout for ringing calls used for backup purposes - Default is 5 minutes</Description>
+            <Name>MAXNOANSWERTIMEOUT</Name>
+        </Parameter>
+        <Parameter>
+            <Value>20000</Value>
+            <Type>String</Type>
+            <Description>Maximum Number of DID/DDI that can be created per Port</Description>
+            <Name>MAXNOOFDIDS</Name>
+        </Parameter>
+        <Parameter>
+            <Value>2</Value>
+            <Type>String</Type>
+            <Description>Voicemails that are less or equal to the value specified are not saved. Default value is 0 - disabled. Value is in seconds</Description>
+            <Name>MINVOICEMAILDURATION</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>Allows to change the format of the date.Example: yyyy/MM/dd HH:mm:ss For more informamtion check here: http://msdn.microsoft.com/en-us/library/8kb3ddd4.aspx If empty or incorrect, the current computer culture settings will be used.</Description>
+            <Name>MISSEDCALLSDATETIMEFORMAT</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>Allows to change the format of the time for the duration of the missed call.Example: hh:mm:ss For more information see here http://msdn.microsoft.com/en-us/library/ee372287.aspx. If empty or incorrect the current computer time settings format will be used</Description>
+            <Name>MISSEDCALLSRINGTIMEFORMAT</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1</Value>
+            <Type>String</Type>
+            <Name>MS_ALLOWVIDEOANDIMAGEPROXY</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1</Value>
+            <Type>String</Type>
+            <Description>Allows Media server to distribute recognized in-band DTMF as RFC2833 to other participants of the call</Description>
+            <Name>MSADDRFC2833FORINBANDDTMF</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>Allow non-sequental RTP port</Description>
+            <Name>MSALLOWNONSEQUENTIALPORTS</Name>
+        </Parameter>
+        <Parameter>
+            <Value>:</Value>
+            <Type>String</Type>
+            <Description>Address of the MS Exchange IVR</Description>
+            <Name>MSE_ADDRESS</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>Int32</Type>
+            <Description>Using MS Exchange IVR</Description>
+            <Name>MSE_USEIVR</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>Value is a string. You can enter the value MNU for compatability with Exchange 2007 or voicemail special number example 999. Default value is Blank which defaults to 999</Description>
+            <Name>MSEXCH_SPECIALMENU</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>This parameter instructs the Media Server to mark all the packets it generates with a value between 0 and 63 in the DSCP field in the IP Header. Default Value: 0 - Valid Values: 0-63 Please note that Windows XP and Server 2003 disables IP Header tagging by default. You will need to set a DWORD registry value called DWORD registry value called DisableUserTOSSetting in the following location HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters and give it value 0. You will need to restart the machine for this setting to kick in.</Description>
+            <Name>MSRTPTOS</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>Controls the behaviour of Music on Hold Default 0 OFF</Description>
+            <Name>MUSICONHOLDBEHAVIOUR</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>Music file 1 for music on hold</Description>
+            <Name>MUSICONHOLDFILE1</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>Music file 2 for music on hold</Description>
+            <Name>MUSICONHOLDFILE2</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>Music file 3 for music on hold</Description>
+            <Name>MUSICONHOLDFILE3</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>Music file 4 for music on hold</Description>
+            <Name>MUSICONHOLDFILE4</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>Music file 5 for music on hold</Description>
+            <Name>MUSICONHOLDFILE5</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>Music file 6 for music on hold</Description>
+            <Name>MUSICONHOLDFILE6</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>Music file 7 for music on hold</Description>
+            <Name>MUSICONHOLDFILE7</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>Music file 8 for music on hold</Description>
+            <Name>MUSICONHOLDFILE8</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>Music file 9 for music on hold</Description>
+            <Name>MUSICONHOLDFILE9</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>Enables the shared parking dialog in 3CXMyPhone. Available options 0 - disabled will not show transfer dialog and park to the first available shared parking place and 1 - Enabled. Display dialog and user can select a shared parking place</Description>
+            <Name>MYPHONE_SHAREDPARKING_DIALOG</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>This will control logging of 3CXMyPhone clients. Available options 0=disabled, 1=Low, 2=Medium, 3=Verbose</Description>
+            <Name>MYPHONECLIENTLOGGINGLEVEL</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1</Value>
+            <Type>String</Type>
+            <Description>This enables new attended transfer functionality notifying the pbx when a transfer was successful for those phones that do not support replaces. Available options are 1=ON and 0=OFF</Description>
+            <Name>NEWAXFEREMULATION</Name>
+        </Parameter>
+        <Parameter>
+            <Value>20</Value>
+            <Type>String</Type>
+            <Description>defines nonce expiration time (seconds). By default it is 5 sec. After this time has passed since nonce issue -- PBX will treat that nonce as expired and will force re-authentication (will issue 407 response with new nonce freshly generated.</Description>
+            <Name>NONCEEXPIRATION</Name>
+        </Parameter>
+        <Parameter>
+            <Value>001264,001268,001242,001246,001441,001345,00506,0053,001767,001809,001829,001849,00503,00299,001473,001671,00502,00509,00504,001876,0052,001664,00505,001670,00507,001787,001939,001869,001758,001784,001868,001649,001284,001340,0054,00297,00501,00591,0055,0056,0057,00593,00500,00594,00590,00592,00596,00595,0051,00508,00597,00598,0058,005993,005994,005995,005997,005998,005999,0093,00994,00973,00880,00975,00673,00855,0086,00670,00995,00852,0091,0062,0098,00964,00972,0081,00962,00965,00996,00856,00961,00853,0060,00960,00976,0095,00977,00850,00968,0092,00970,0063,00974,00966,0065,0082,0094,00963,00886,00992,0066,00993,00971,00998,0084,00967,00213,00244,00247,00229,00267,00246,00226,00257,00237,00238,00236,00235,00269,00242,00243,00225,00253,0020,00240,00291,00251,00241,00220,00233,00224,00245,00254,00266,00231,00218,00261,00265,00223,00222,00230,00262269,00269639,00212,00258,00264,00227,00234,00262,00250,00290,00239,00221,00248,00232,00252,0027,00211,00249,00268,00255,00228,002908,00216,00256,00260,0025524,00263,001684,0061,0061,006189162,00682,00679,00689,00686,00692,00691,00674,00687,0064,00683,00672,00680,00675,00872,00685,00677,00690,00676,00688,00699,00678,00681</Value>
+            <Type>String</Type>
+            <Description>Specifies the country codes which are not allowed for outbound calls</Description>
+            <Name>NOTALLOWED_COUNTRYCODES</Name>
+        </Parameter>
+        <Parameter>
+            <Value>%%OPERATOR%%</Value>
+            <Type>String</Type>
+            <Description>Operator extension number</Description>
+            <Name>OPERATOR</Name>
+        </Parameter>
+        <Parameter>
+            <Value>/var/lib/3cxpbx/Instance1/Data/Ivr/Prompts/onhold.wav</Value>
+            <Type>String</Type>
+            <Name>PARK_MOH_SOURCE</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>Defines the email notification error codes</Description>
+            <Name>PBXERRORCODES</Name>
+        </Parameter>
+        <Parameter>
+            <Value>%%PBXERRORMAIL%%</Value>
+            <Type>String</Type>
+            <Description>Specifies the email to send to for notification error codes</Description>
+            <Name>PBXERRORMAIL</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>Int32</Type>
+            <Description>Prefix for external call</Description>
+            <Name>PEC</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>System wide option. Currently available for Polycom only. Available values 0 1. 1 removes company phonebook leaving personal phonebook only.</Description>
+            <Name>PERS_PHBK_ONLY</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1</Value>
+            <Type>String</Type>
+            <Description>Defines caller name replacement format. Available values 0=FirstName LastName 1=LastName FirstName Default 1</Description>
+            <Name>PHONEBOOK_LAST_FIRST</Name>
+        </Parameter>
+        <Parameter>
+            <Value>6</Value>
+            <Type>String</Type>
+            <Description>Available values 0 disabled,-1 exact match only, N&gt;0 minimum match length required for best-match strategy, numbers are compared from tail to head</Description>
+            <Name>PHONEBOOK_MIN_MATCH</Name>
+        </Parameter>
+        <Parameter>
+            <Value>38876</Value>
+            <Type>String</Type>
+            <Description>Version number of Phone Devices Auto Detection</Description>
+            <Name>PHONEDEVICESVERSION</Name>
+        </Parameter>
+        <Parameter>
+            <Value>*20*</Value>
+            <Type>String</Type>
+            <Description>Pickup dial code</Description>
+            <Name>PICKUP</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>name of queue / inbound rule will be pre-pended rather than appended</Description>
+            <Name>PREPENDNAMETOCID</Name>
+        </Parameter>
+        <Parameter>
+            <Value>10/3/2014 12:36:27 PM</Value>
+            <Type>String</Type>
+            <Description>Time of the last changing within the prompts settings</Description>
+            <Name>PRMUPDTM</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>Randomizes Music on Hold per call made Default value 0 OFF ie MOH is randomized Per Day. When 1 option is on and MOH will be randomized per call</Description>
+            <Name>RANDOMMUSICPERCALL</Name>
+        </Parameter>
+        <Parameter>
+            <Value>120</Value>
+            <Type>String</Type>
+            <Description>Controls interval of registration period when 3CX is answered with 503 Service Unavailable. Default Re-registration is 600 seconds (10 minutes) Value is in seconds</Description>
+            <Name>REGISTER_REQUEST_MAX_TIMER</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>Remove if same Area Code</Description>
+            <Name>REMOVEAREACODE</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1</Value>
+            <Type>String</Type>
+            <Description>Remove if same Country</Description>
+            <Name>REMOVECOUNTRYCODE</Name>
+        </Parameter>
+        <Parameter>
+            <Value>400,401,403,404,405,406,408,409,415,480,481,484,486,488,500,501,502,503,504,513,600,603,604,606</Value>
+            <Type>String</Type>
+            <Description>These are all the error codes that will be reported with Event ID 12294 when received from VoIP Prov Bridge PSTN Trunk. Comma separated list of sip error codes</Description>
+            <Name>RESPONSE_ERROR_CODES</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1800</Value>
+            <Type>String</Type>
+            <Description>Specifies the time interval that an abusive IP Address remains in the blacklist</Description>
+            <Name>SEC_BLACKLIST_TIME</Name>
+        </Parameter>
+        <Parameter>
+            <Value>friendly-scanner,sipsak,smap,Elite 1.0 Brcm Callctrl,sipcli,VaxSIPUserAgent,VaxIPUserAgent,PortSIP,friendly-request,sip-scan,sipvicious,sundayddr,iWar,SIVuS,Gulp,sipv,siparmyknife,Test Agent,eyeBeam release 3006o stamp 17551,SIP Call</Value>
+            <Type>String</Type>
+            <Description>List of user agents in comma separated form that are by default used in security and hacking tools. 3CX will immediately ignore any responses and act dead</Description>
+            <Name>SEC_IGNORE_USER_AGENT</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1000</Value>
+            <Type>String</Type>
+            <Description>Unanswered challenge requests</Description>
+            <Name>SEC_MAX_CHALLENGES</Name>
+        </Parameter>
+        <Parameter>
+            <Value>25</Value>
+            <Type>String</Type>
+            <Description>Specifies the amount of failed authentications that the 3CX Phone System will accept</Description>
+            <Name>SEC_MAX_FAILED_AUTH</Name>
+        </Parameter>
+        <Parameter>
+            <Value>2000</Value>
+            <Type>String</Type>
+            <Description>Specifies the first protection layer counted in packets per second</Description>
+            <Name>SEC_RATE_BARRIER_1</Name>
+        </Parameter>
+        <Parameter>
+            <Value>4000</Value>
+            <Type>String</Type>
+            <Description>Specifies the final protection layer counted in packets per second</Description>
+            <Name>SEC_RATE_BARRIER_2</Name>
+        </Parameter>
+        <Parameter>
+            <Value>200</Value>
+            <Type>String</Type>
+            <Description>Specifies the time interval in milliseconds where counting starts but no action is enforced</Description>
+            <Name>SEC_RATE_TIME_ALLOW</Name>
+        </Parameter>
+        <Parameter>
+            <Value>5</Value>
+            <Type>String</Type>
+            <Description>Value specified in 503 Too many requests triggered for Barrier 1 responses. Default value in seconds</Description>
+            <Name>SEC_RETRY_AFTER</Name>
+        </Parameter>
+        <Parameter>
+            <Value>%%DIALCODE_DNDON%%</Value>
+            <Type>String</Type>
+            <Description>SetAvailable dial code</Description>
+            <Name>SETAVAILABLE</Name>
+        </Parameter>
+        <Parameter>
+            <Value>%%DIALCODE_DNDOFF%%</Value>
+            <Type>String</Type>
+            <Description>SetAway dial code</Description>
+            <Name>SETAWAY</Name>
+        </Parameter>
+        <Parameter>
+            <Value>10</Value>
+            <Type>String</Type>
+            <Description>Specifies the number of shared parking extensions</Description>
+            <Name>SHAREDPARKINGCOUNT</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1</Value>
+            <Type>String</Type>
+            <Description>Enabled by default - Highlights in red extensions that have weak passwords and voicemail pin numbers</Description>
+            <Name>SHOWEXTWEAKPASS</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1</Value>
+            <Type>String</Type>
+            <Description>Parameter to enable 3CX Webmeeting user interface</Description>
+            <Name>SHOWMUI</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>Specify if the extension password should be shown</Description>
+            <Name>SHOWPASSW</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>Available options 0 off default behavior, 1 on which means that pbx will use ip specified in parameter SIPINTERFACEIP in all SIP contructs instead of calling windows function GetBestRoute</Description>
+            <Name>SINGLE_SIP_IP</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1</Value>
+            <Type>String</Type>
+            <Description>Available options 0 and 1. If set to 0, when one of the sip forked entities sends a busy signal, all invites to all participants are canceled at once. If set to 1, each participant must send a busy respectively. Other SiP Forked devices remain on target</Description>
+            <Name>SIP_FORKED_ID_BUSY</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>IP Address that phone system server will use in all SIP negotiations. If IP is specified (must be present on stack) and parameter SINGLE_SIP_IP is set to 1, call manager will use this IP in all SIP constructs overriding windows function GetBestRoute. Default blank</Description>
+            <Name>SIPINTERFACEIP</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>Time intervall to poll endpoints with SIP INFO messages, in seconds. 0 - disabled</Description>
+            <Name>SIPPINGPERIOD</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>Enable or disable SLA feature - Available values 0 off or 1 on Default Value Off</Description>
+            <Name>SLA_ENABLED</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>Defines how many SLA slots are available for each shared appearance when SLA is activated by device subscription. 0 means none. Positive N means N slots are allocated on the first subscription</Description>
+            <Name>SLA_ONSUBSCRIBE</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0.0.0.0:5002</Value>
+            <Type>String</Type>
+            <Description>SMDR Listening host and port, empty host = disabled(default), use 0.0.0.0:1752</Description>
+            <Name>SMDRHOSTPORT</Name>
+        </Parameter>
+        <Parameter>
+            <Value>true</Value>
+            <Type>String</Type>
+            <Description>Parameter to control SNOM phonebook. Available options are true and false. When true, the phonebook directory is erased and re-provisioned from scratch. Default is true</Description>
+            <Name>SNOM_TBOOK</Name>
+        </Parameter>
+        <Parameter>
+            <Value>SP.</Value>
+            <Type>String</Type>
+            <Description>The installed service pack version description</Description>
+            <Name>SP_VERSDESC</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>Shared parking place will forcedly terminate simultaneous attempts to pickup a call from multiple Cisco SPA Phones simultaneously. Available options are 1=ON 0=OFF. Default Off</Description>
+            <Name>SPP_DROP_PICKUP_CALLS</Name>
+        </Parameter>
+        <Parameter>
+            <Value>stun.3cx.com</Value>
+            <Type>String</Type>
+            <Description>Default STUN server address/port</Description>
+            <Name>STUNSRV</Name>
+        </Parameter>
+        <Parameter>
+            <Value>stun2.3cx.com</Value>
+            <Type>String</Type>
+            <Description>Default second STUN server address/port</Description>
+            <Name>STUNSRV2</Name>
+        </Parameter>
+        <Parameter>
+            <Value>3478</Value>
+            <Type>Int32</Type>
+            <Description>Default second STUN server port</Description>
+            <Name>STUNSRV2PORT</Name>
+        </Parameter>
+        <Parameter>
+            <Value>stun3.3cx.com</Value>
+            <Type>String</Type>
+            <Description>Default third STUN server address/port</Description>
+            <Name>STUNSRV3</Name>
+        </Parameter>
+        <Parameter>
+            <Value>3478</Value>
+            <Type>Int32</Type>
+            <Description>Default third STUN server port</Description>
+            <Name>STUNSRV3PORT</Name>
+        </Parameter>
+        <Parameter>
+            <Value>3478</Value>
+            <Type>Int32</Type>
+            <Description>Default STUN server port</Description>
+            <Name>STUNSRVPORT</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1200</Value>
+            <Type>Int32</Type>
+            <Description>Recheck external IP every, sec</Description>
+            <Name>STUNTCHECK</Name>
+        </Parameter>
+        <Parameter>
+            <Value>3000</Value>
+            <Type>Int32</Type>
+            <Description>Timeout time for STUN response, ms</Description>
+            <Name>STUNTOUT</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1</Value>
+            <Type>String</Type>
+            <Description>This parameter saves the logging level</Description>
+            <Name>SYSTEMLOGGINGLEVEL</Name>
+        </Parameter>
+        <Parameter>
+            <Value>25</Value>
+            <Type>String</Type>
+            <Description>Day when DST settings end</Description>
+            <Name>TIME_DST_END_DAY</Name>
+        </Parameter>
+        <Parameter>
+            <Value>3</Value>
+            <Type>String</Type>
+            <Description>Hour when DST settings end</Description>
+            <Name>TIME_DST_END_HOUR</Name>
+        </Parameter>
+        <Parameter>
+            <Value>10</Value>
+            <Type>String</Type>
+            <Description>Month when DST settings end</Description>
+            <Name>TIME_DST_END_MONTH</Name>
+        </Parameter>
+        <Parameter>
+            <Value>60</Value>
+            <Type>String</Type>
+            <Description>Number of minutes to add while DST is active</Description>
+            <Name>TIME_DST_SAVING_MINUTES</Name>
+        </Parameter>
+        <Parameter>
+            <Value>28</Value>
+            <Type>String</Type>
+            <Description>Day when DST settings start</Description>
+            <Name>TIME_DST_START_DAY</Name>
+        </Parameter>
+        <Parameter>
+            <Value>2</Value>
+            <Type>String</Type>
+            <Description>Hour when DST settings start</Description>
+            <Name>TIME_DST_START_HOUR</Name>
+        </Parameter>
+        <Parameter>
+            <Value>3</Value>
+            <Type>String</Type>
+            <Description>Month when DST settings start</Description>
+            <Name>TIME_DST_START_MONTH</Name>
+        </Parameter>
+        <Parameter>
+            <Value>pool.ntp.org</Value>
+            <Type>String</Type>
+            <Description>NTP server</Description>
+            <Name>TIME_NTP_SERVER</Name>
+        </Parameter>
+        <Parameter>
+            <Value>US-Pacific PST</Value>
+            <Type>String</Type>
+            <Description>Timezone in Aastra-compatible format</Description>
+            <Name>TIME_TIMEZONE_AASTRA</Name>
+        </Parameter>
+        <Parameter>
+            <Value>GMT-8:00 (US Pacific Time, Los Angeles)</Value>
+            <Type>String</Type>
+            <Description>Timezone for Cisco 7940 7960 compatible format</Description>
+            <Name>TIME_TIMEZONE_CISCO79X0</Name>
+        </Parameter>
+        <Parameter>
+            <Value>GMT-8:00 (US Pacific Time, Los Angeles)</Value>
+            <Type>String</Type>
+            <Description>Timezone for Cisco 7941 7961 compatible format</Description>
+            <Name>TIME_TIMEZONE_CISCO79X1</Name>
+        </Parameter>
+        <Parameter>
+            <Value>GMT-8:00 Mexico(Tijuana,Mexicali)</Value>
+            <Type>String</Type>
+            <Description>Timezone in Fanvil compatible format</Description>
+            <Name>TIME_TIMEZONE_FANVIL</Name>
+        </Parameter>
+        <Parameter>
+            <Value>GMT-5:00 (US Eastern Time, New York)</Value>
+            <Type>String</Type>
+            <Description>Timezone in Grandstream-compatible format</Description>
+            <Name>TIME_TIMEZONE_GRANDSTREAM</Name>
+        </Parameter>
+        <Parameter>
+            <Value>GMT-8:00 (US Pacific Time, Los Angeles)</Value>
+            <Type>String</Type>
+            <Description>Timezone in Grandstream-compatible format for new Grandstream Executive phone models</Description>
+            <Name>TIME_TIMEZONE_GRANDSTREAMEXEC</Name>
+        </Parameter>
+        <Parameter>
+            <Value>GMT-8:00 (US Pacific Time, Los Angeles)</Value>
+            <Type>String</Type>
+            <Description>Timezone in Linksys-compatible format</Description>
+            <Name>TIME_TIMEZONE_LINKSYS</Name>
+        </Parameter>
+        <Parameter>
+            <Value>-8 United States - Pacific Time</Value>
+            <Type>String</Type>
+            <Description>Timezone in Snom-compatible format</Description>
+            <Name>TIME_TIMEZONE_SNOM</Name>
+        </Parameter>
+        <Parameter>
+            <Value>GMT-8:00 United States-Pacific Time</Value>
+            <Type>String</Type>
+            <Description>Set timezone for Yealink - Available options are -13 to 12 Default -5 US Eastern Standard Time</Description>
+            <Name>TIME_TIMEZONE_YEALINK</Name>
+        </Parameter>
+        <Parameter>
+            <Value>GMT-8:00 United States-Pacific Time</Value>
+            <Type>String</Type>
+            <Description>Timezone in Cyberdata-compatible format</Description>
+            <Name>TIME_TIMEZONE_CYBERDATA</Name>
+        </Parameter>
+        <Parameter>
+            <Value>60</Value>
+            <Type>String</Type>
+            <Description>Difference from UTC in minutes</Description>
+            <Name>TIME_UTC_OFFSET_MINUTES</Name>
+        </Parameter>
+        <Parameter>
+            <Value>GMT-8:00 (US Pacific Time, Los Angeles)</Value>
+            <Type>String</Type>
+            <Description>Difference from UTC in seconds- Used for Polycom phones</Description>
+            <Name>TIME_UTC_OFFSET_SECONDS</Name>
+        </Parameter>
+        <Parameter>
+            <Value>3</Value>
+            <Type>String</Type>
+            <Description>0 - email about upgrade insurance expiration was not send, 1 - email was sent after expiration, 2 - was sent before 5 day, 3 - was sent before 30 days</Description>
+            <Name>UPGRADEINSURANCE_EMAIL</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>0 - popup message about upgrade insurance expiration was not shown, 1 - popup was shown once, 2 - was shown twice</Description>
+            <Name>UPGRADEINSURANCE_POPUP</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>User Agent that 3CX will send can be customized. This will hide the identity of the VoIP PBX so attackers cannot know what is behind port 5060 Needs full restart of services</Description>
+            <Name>USERAGENTSTRING</Name>
+        </Parameter>
+        <Parameter>
+            <Value>%%DIALCODE_VM%%</Value>
+            <Type>String</Type>
+            <Description>VMail dial code</Description>
+            <Name>VMAIL</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>String</Type>
+            <Description>Enable dialout calls from voicemail menu. By default it is 0. Set to 1 to enable dialout calls.</Description>
+            <Name>VMDIALOUTENABLED</Name>
+        </Parameter>
+        <Parameter>
+            <Value>15</Value>
+            <Type>String</Type>
+            <Description>Time interval in minutes to resend email notifications</Description>
+            <Name>VMN_RETRY_MINUTES</Name>
+        </Parameter>
+        <Parameter>
+            <Value>72</Value>
+            <Type>String</Type>
+            <Description>Time interval in hours to stop sending a failed email notification Default 3 days</Description>
+            <Name>VMN_STOP_RETRY_HOURS</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1</Value>
+            <Type>String</Type>
+            <Description>Determines whether VM will ask for pin. By default it is 1. Set to 0 to access the VM menu directly(e.g. Hotel extensions).</Description>
+            <Name>VMPINREQUIRED</Name>
+        </Parameter>
+        <Parameter>
+            <Value>%%WEBSERVERPASS%%</Value>
+            <Type>String</Type>
+            <Description>The admin pass</Description>
+            <Name>WEBSERVERPASS</Name>
+        </Parameter>
+        <Parameter>
+            <Value>%%WEBSERVERUSER%%</Value>
+            <Type>String</Type>
+            <Description>The admin ID</Description>
+            <Name>WEBSERVERUSER</Name>
+        </Parameter>
+        <Parameter>
+            <Value>%%PROVISIONING_FOLDER%%</Value>
+            <Type>String</Type>
+            <Description>Subfolder of provisioning URL. Provisioning URL location is provided by Web Core</Description>
+            <Name>PROVISIONING_FOLDER</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>Parameters for initial wizard of management console</Description>
+            <Name>INITIAL_WIZARD_PARAMS</Name>
+        </Parameter>
+        <Parameter>
+            <Value>123456</Value>
+            <Type>String</Type>
+            <Description>Id of the tunnel for client connections</Description>
+            <Name>TNL_CLIENT_ID</Name>
+        </Parameter>
+        <Parameter>
+            <Value>%%TNL_CLIENT_PASSWORD%%</Value>
+            <Type>String</Type>
+            <Name>TNL_CLIENT_PASSWORD</Name>
+        </Parameter>
+        <Parameter>
+            <Value>30</Value>
+            <Type>String</Type>
+            <Description>Delete recordings older then this amount of days</Description>
+            <Name>DELETE_RECS_OLDER_THEN</Name>
+        </Parameter>
+        <Parameter>
+            <Value>30</Value>
+            <Type>String</Type>
+            <Description>Delete voicemails older then this amount of days</Description>
+            <Name>DELETE_VM_OLDER_THEN</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1</Value>
+            <Type>String</Type>
+            <Description>Send email to admin in case some services stopped</Description>
+            <Name>NOTIFY_SERVICES_DOWN</Name>
+        </Parameter>
+        <Parameter>
+            <Value>10000</Value>
+            <Type>String</Type>
+            <Description>Row limit for reports</Description>
+            <Name>REPORT_ROW_LIMIT</Name>
+        </Parameter>
+        <Parameter>
+            <Value>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;template&gt;
+&lt;from_display_name&gt;%%ORGANIZERNAME%%&lt;/from_display_name&gt;
+&lt;subject&gt;Reminder: %%MEETINGTITLE%%&lt;/subject&gt;
+&lt;body&gt;
+&lt;![CDATA[
+&lt;html&gt;
+&lt;head&gt;
+&lt;style type="text/css"&gt;
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {	
+  margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+	display: block;
+}
+body {
+	line-height: 1.2em;
+  margin: 10px;
+}
+ol,ul {
+	list-style: none;
+}
+a {
+  color: #007bc7;
+  text-decoration: underline;
+}
+blockquote,q {
+	quotes: none;
+}
+blockquote:before,blockquote:after,q:before,q:after {
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body style="line-height:1.2em"&gt;
+&lt;p style="margin:0"&gt;Dear %%PARTICIPANTNAME%%,&lt;/p&gt;
+&lt;p style="margin:0"&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p style="margin:0"&gt;A participant is currently waiting for you to join the following meeting:&lt;/p&gt;
+&lt;p style="margin:0"&gt;Title: %%MEETINGTITLE%%&lt;/p&gt;
+&lt;p style="margin:0"&gt;Notes: %%NOTES%%&lt;/p&gt;
+&lt;p style="margin:0"&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p style="margin:0"&gt;To join from your Chrome or Firefox browser: click on this link %%JOINURL%%&lt;/p&gt;
+&lt;p style="margin:0"&gt;To join from your Android device: Download the Android app https://play.google.com/store/apps/details?id=org.tcx.webmeeting and click here %%JOINURL%%&lt;/p&gt;
+&lt;p style="margin:0"&gt;To join from your iOS device: Download the iOS app https://itunes.apple.com/app/3cx-webmeeting/id1039756959 and click here %%JOINURL%%&lt;/p&gt;
+&lt;p style="margin:0"&gt;&amp;nbsp;&lt;/p&gt;
+%%IF_ORGANIZER_START%%
+&lt;p style="margin:0"&gt;Send this link to participants: %%OPENLINK%%&lt;/p&gt;
+%%IF_ORGANIZER_END%%
+&lt;p style="margin:0"&gt;Learn more about using 3CX WebMeeting: http://www.3cx.com/user-manual/webmeeting/joining-a-webconference/&lt;/p&gt;
+&lt;p style="margin:0"&gt;&amp;nbsp;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+]]&gt;
+&lt;/body&gt;
+&lt;/template&gt;</Value>
+            <Type>String</Type>
+            <Description>template for web meeting unattended join</Description>
+            <Name>MAILTEMPLATE_WEBMEETINGUNATTENDEDJOIN_DEFAULT</Name>
+        </Parameter>
+        <Parameter>
+            <Value>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;parameters&gt;
+&lt;parameter name="%%MEETINGTITLE%%"&gt;WebMeeting title(name)&lt;/parameter&gt;
+&lt;parameter name="%%STARTTIME%%"&gt;WebMeeting start time&lt;/parameter&gt;
+&lt;parameter name="%%NOTES%%"&gt;Notes. Web Meeting description&lt;/parameter&gt;
+&lt;parameter name="%%DURATION%%"&gt;Meeting duration in minutes&lt;/parameter&gt;
+&lt;parameter name="%%ORGANIZERNAME%%"&gt;Name of organizer&lt;/parameter&gt;
+&lt;parameter name="%%ORGANIZEREMAIL%%"&gt;E-mail of organizer&lt;/parameter&gt;
+&lt;parameter name="%%IF_ORGANIZER_START%%"&gt;Begin marker of part of email for organizer only&lt;/parameter&gt;
+&lt;parameter name="%%OPENLINK%%"&gt;Open Link for organizer only&lt;/parameter&gt;
+&lt;parameter name="%%IF_ORGANIZER_END%%"&gt;End marker of part of email for organizer only&lt;/parameter&gt;
+&lt;parameter name="%%PARTICIPANTNAME%%"&gt;Name of participant to whom this e-mail will be sent&lt;/parameter&gt;
+&lt;parameter name="%%JOINURL%%"&gt;Link to join for this participant&lt;/parameter&gt;
+&lt;/parameters&gt;</Value>
+            <Type>String</Type>
+            <Description>parameters for web meeting unattended join</Description>
+            <Name>MAILTEMPLATE_WEBMEETINGUNATTENDEDJOIN_PARAMETERS</Name>
+        </Parameter>
+        <Parameter>
+            <Value>gray</Value>
+            <Type>String</Type>
+            <Description>Web Meeting Theme</Description>
+            <Name>WEBMEETING_THEME</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1</Value>
+            <Type>String</Type>
+            <Description>Notify admin about failed scheduled backups</Description>
+            <Name>NOTIFY_BACKUP_FAILED</Name>
+        </Parameter>
+        <Parameter>
+            <Value>2</Value>
+            <Type>String</Type>
+            <Description>Logging level - Available values 1 to 6 where 6 is highest verbosity.</Description>
+            <Name>CMLOG_VERBOSITY</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1</Value>
+            <Type>String</Type>
+            <Description>1: 1 file for all calls, 2: 1 file per call</Description>
+            <Name>CDR_LOGGING_STYLE</Name>
+        </Parameter>
+        <Parameter>
+            <Value>250</Value>
+            <Type>String</Type>
+            <Description>Size of file in MB. When the size of the CDR file is reached, the next call is processed and the file is saved with the date stamp and a new file is written to ensure uniqueness leaving it in the same folder.</Description>
+            <Name>CDR_LOGGING_FILESIZE</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1</Value>
+            <Type>String</Type>
+            <Description>Enable E164 number processing</Description>
+            <Name>E164</Name>
+        </Parameter>
+        <Parameter>
+            <Value>Away</Value>
+            <Type>String</Type>
+            <Name>CDM_EX_CAL_LEGACYAWAY</Name>
+        </Parameter>
+        <Parameter>
+            <Value>Out of office</Value>
+            <Type>String</Type>
+            <Name>CDM_EX_CAL_LEGACYOOO</Name>
+        </Parameter>
+        <Parameter>
+            <Value>4</Value>
+            <Type>String</Type>
+            <Description>Scheduled report generation hour (from 0 to 23)</Description>
+            <Name>SCHEDULED_REPORT_GENERATION_HOUR</Name>
+        </Parameter>
+        <Parameter>
+            <Value>[{"Category":"phones","Count":1},{"Category":"promptsets","Count":15},{"Category":"integration","Count":14},{"Category":"firmwareupdates","Count":62},{"Category":"cert","Count":1},{"Category":"clients","Count":2}]</Value>
+            <Type>String</Type>
+            <Description>Last updates shown in dashboard</Description>
+            <Name>UPDATE_NOTIFICATION</Name>
+        </Parameter>
+        <Parameter>
+            <Value>2016-12-05</Value>
+            <Type>String</Type>
+            <Name>LAST_PURGE_EVENT_LOG</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Name>EVENTLOGUPDATED</Name>
+        </Parameter>
+        <Parameter>
+            <Value>237107ba-87a1-4b5d-b54a-2c58c267b07e</Value>
+            <Type>String</Type>
+            <Description>Last updated admin params</Description>
+            <Name>LASTUPDATED</Name>
+        </Parameter>
+        <Parameter>
+            <Value>True</Value>
+            <Type>String</Type>
+            <Name>EVENTS_SHOW_ERRORS</Name>
+        </Parameter>
+        <Parameter>
+            <Value>True</Value>
+            <Type>String</Type>
+            <Name>EVENTS_SHOW_WARNINGS</Name>
+        </Parameter>
+        <Parameter>
+            <Value>True</Value>
+            <Type>String</Type>
+            <Name>EVENTS_SHOW_INFORMATION</Name>
+        </Parameter>
+        <Parameter>
+            <Value>10</Value>
+            <Type>String</Type>
+            <Name>EVENTS_ON_STATUS_PAGE</Name>
+        </Parameter>
+        <Parameter>
+            <Value>True</Value>
+            <Type>String</Type>
+            <Name>EVENTS_SHOW_WARNINGS_2</Name>
+        </Parameter>
+        <Parameter>
+            <Value>True</Value>
+            <Type>String</Type>
+            <Name>EVENTS_SHOW_ERRORS_2</Name>
+        </Parameter>
+        <Parameter>
+            <Value>True</Value>
+            <Type>String</Type>
+            <Name>EVENTS_SHOW_INFORMATION_2</Name>
+        </Parameter>
+        <Parameter>
+            <Value>30</Value>
+            <Type>String</Type>
+            <Name>PURGE_EVENT_LOG_AFTER</Name>
+        </Parameter>
+        <Parameter>
+            <Value>Updated</Value>
+            <Type>String</Type>
+            <Name>LICENSE_NOTIFY</Name>
+        </Parameter>
+        <Parameter>
+            <Value>0</Value>
+            <Type>Int32</Type>
+            <Description>Enable chat logs</Description>
+            <Name>ENABLE_CHAT_LOGS</Name>
+        </Parameter>
+        <Parameter>
+            <Value>smtp001.3cx.com</Value>
+            <Type>String</Type>
+            <Description>SMTP server address</Description>
+            <Name>MLSRVADDR</Name>
+        </Parameter>
+        <Parameter>
+            <Value>25</Value>
+            <Type>String</Type>
+            <Description>SMTP server port</Description>
+            <Name>MLSRVPORT</Name>
+        </Parameter>
+        <Parameter>
+            <Value>noreply@3cx.com</Value>
+            <Type>String</Type>
+            <Description>Senders e-mail address for notifications</Description>
+            <Name>MLFROMADDR</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>Username for accessing SMTP server</Description>
+            <Name>MLSRVUSER</Name>
+        </Parameter>
+        <Parameter>
+            <Type>String</Type>
+            <Description>Password for accessing SMTP server</Description>
+            <Name>MLSRVPASSWORD</Name>
+        </Parameter>
+        <Parameter>
+            <Value>False</Value>
+            <Type>String</Type>
+            <Description>Enables SSL/TLS to send email notifications. Available values are 0 OFF and 1 ON. Default value is 0. Values 0 = OFF(unchecked) 1 = ON (Checked)</Description>
+            <Name>MLSRVTLS</Name>
+        </Parameter>
+        <Parameter>
+            <Value>011</Value>
+            <Type>String</Type>
+            <Description>International Prefix</Description>
+            <Name>INTERNATIONALPREFIX</Name>
+        </Parameter>
+        <Parameter>
+            <Value>1</Value>
+            <Type>String</Type>
+            <Description>Country index for e164 Number processing</Description>
+            <Name>COUNTRYCODE</Name>
+        </Parameter>
+        <Parameter>
+            <Value>GMT-8:00 United States-Pacific Time</Value>
+            <Type>String</Type>
+            <Name>TIME_TIMEZONE_HTEK</Name>
+        </Parameter>
+    </Parameters>
+    <Codecs>
+        <Codec>
+            <SamplingRate>8000</SamplingRate>
+            <RFCName>PCMU</RFCName>
+            <Name>G.711 U-law</Name>
+            <Visibility>1</Visibility>
+        </Codec>
+        <Codec>
+            <SamplingRate>8000</SamplingRate>
+            <RFCName>PCMA</RFCName>
+            <Name>G.711 A-law</Name>
+            <Visibility>1</Visibility>
+        </Codec>
+        <Codec>
+            <SamplingRate>8000</SamplingRate>
+            <RFCName>GSM</RFCName>
+            <Name>GSM-FR</Name>
+            <Visibility>1</Visibility>
+        </Codec>
+        <Codec>
+            <SamplingRate>8000</SamplingRate>
+            <RFCName>Speex</RFCName>
+            <Name>Speex</Name>
+            <Visibility>1</Visibility>
+        </Codec>
+        <Codec>
+            <SamplingRate>8000</SamplingRate>
+            <RFCName>iLBC</RFCName>
+            <Name>iLBC</Name>
+            <Visibility>1</Visibility>
+        </Codec>
+        <Codec>
+            <SamplingRate>8000</SamplingRate>
+            <RFCName>G729</RFCName>
+            <Name>G729</Name>
+            <Visibility>3</Visibility>
+        </Codec>
+        <Codec>
+            <SamplingRate>8000</SamplingRate>
+            <RFCName>G722</RFCName>
+            <Name>G722</Name>
+            <Visibility>1</Visibility>
+        </Codec>
+    </Codecs>
+	<Gateways>
+%%TRUNKSXML%%    </Gateways>
+    <DeniedIPs>
+        <BlackListEntry>
+            <Description>3CX Webmeeting Servers</Description>
+            <BlockType>1</BlockType>
+            <IPMask>255.255.255.255</IPMask>
+            <IPAddr>51.254.74.8</IPAddr>
+            <ExpiresAt>2040-11-30 22:00:00</ExpiresAt>
+        </BlackListEntry>
+    </DeniedIPs>
+    <Tenants>
+        <Tenant>
+            <Name>default</Name>
+            <Properties>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="default" p="default" r="1.0" /&gt;</Value>
+                    <Name>BILL_0000</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Afghanistan" p="0093" r="1.0" /&gt;</Value>
+                    <Name>BILL_0001</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Albania" p="00355" r="1.0" /&gt;</Value>
+                    <Name>BILL_0002</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Algeria" p="00213" r="1.0" /&gt;</Value>
+                    <Name>BILL_0003</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="American Samoa" p="00684" r="1.0" /&gt;</Value>
+                    <Name>BILL_0004</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Andorra" p="00376" r="1.0" /&gt;</Value>
+                    <Name>BILL_0005</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Angola" p="00244" r="1.0" /&gt;</Value>
+                    <Name>BILL_0006</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Anguilla" p="001264" r="1.0" /&gt;</Value>
+                    <Name>BILL_0007</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Antigua and Barbuda" p="001268" r="1.0" /&gt;</Value>
+                    <Name>BILL_0008</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Argentina" p="0054" r="1.0" /&gt;</Value>
+                    <Name>BILL_0009</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Armenia" p="00374" r="1.0" /&gt;</Value>
+                    <Name>BILL_0010</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Aruba" p="00297" r="1.0" /&gt;</Value>
+                    <Name>BILL_0011</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Ascension Island" p="00247" r="1.0" /&gt;</Value>
+                    <Name>BILL_0012</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Australia" p="0061" r="1.0" /&gt;</Value>
+                    <Name>BILL_0013</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Austria" p="0043" r="1.0" /&gt;</Value>
+                    <Name>BILL_0014</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Azerbaijan" p="00994" r="1.0" /&gt;</Value>
+                    <Name>BILL_0015</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Bahamas, The" p="001242" r="1.0" /&gt;</Value>
+                    <Name>BILL_0016</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Bahrain" p="00973" r="1.0" /&gt;</Value>
+                    <Name>BILL_0017</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Bangladesh" p="00880" r="1.0" /&gt;</Value>
+                    <Name>BILL_0018</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Barbados" p="001246" r="1.0" /&gt;</Value>
+                    <Name>BILL_0019</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Belarus" p="00375" r="1.0" /&gt;</Value>
+                    <Name>BILL_0020</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Belgium" p="0032" r="1.0" /&gt;</Value>
+                    <Name>BILL_0021</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Belize" p="00501" r="1.0" /&gt;</Value>
+                    <Name>BILL_0022</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Benin" p="00229" r="1.0" /&gt;</Value>
+                    <Name>BILL_0023</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Bermuda" p="001441" r="1.0" /&gt;</Value>
+                    <Name>BILL_0024</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Bhutan" p="00975" r="1.0" /&gt;</Value>
+                    <Name>BILL_0025</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Bolivia" p="00591" r="1.0" /&gt;</Value>
+                    <Name>BILL_0026</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Bosnia and Herzegovina" p="00387" r="1.0" /&gt;</Value>
+                    <Name>BILL_0027</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Botswana" p="00267" r="1.0" /&gt;</Value>
+                    <Name>BILL_0028</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Brazil" p="0055" r="1.0" /&gt;</Value>
+                    <Name>BILL_0029</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Brunei" p="00673" r="1.0" /&gt;</Value>
+                    <Name>BILL_0030</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Bulgaria" p="00359" r="1.0" /&gt;</Value>
+                    <Name>BILL_0031</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Burkina Faso" p="00226" r="1.0" /&gt;</Value>
+                    <Name>BILL_0032</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Burundi" p="00257" r="1.0" /&gt;</Value>
+                    <Name>BILL_0033</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Cambodia" p="00855" r="1.0" /&gt;</Value>
+                    <Name>BILL_0034</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Cameroon" p="00237" r="1.0" /&gt;</Value>
+                    <Name>BILL_0035</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Cape Verde" p="00238" r="1.0" /&gt;</Value>
+                    <Name>BILL_0036</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Cayman Islands" p="001345" r="1.0" /&gt;</Value>
+                    <Name>BILL_0037</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Central African Republic" p="00236" r="1.0" /&gt;</Value>
+                    <Name>BILL_0038</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Chad" p="00235" r="1.0" /&gt;</Value>
+                    <Name>BILL_0039</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Chile" p="0056" r="1.0" /&gt;</Value>
+                    <Name>BILL_0040</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="China" p="0086" r="1.0" /&gt;</Value>
+                    <Name>BILL_0041</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Colombia" p="0057" r="1.0" /&gt;</Value>
+                    <Name>BILL_0042</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Comoros" p="00269" r="1.0" /&gt;</Value>
+                    <Name>BILL_0043</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Congo" p="00242" r="1.0" /&gt;</Value>
+                    <Name>BILL_0044</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Congo (DRC)" p="00243" r="1.0" /&gt;</Value>
+                    <Name>BILL_0045</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Cook Islands" p="00682" r="1.0" /&gt;</Value>
+                    <Name>BILL_0046</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Costa Rica" p="00506" r="1.0" /&gt;</Value>
+                    <Name>BILL_0047</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Cote d`Ivoire" p="00225" r="1.0" /&gt;</Value>
+                    <Name>BILL_0048</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Croatia" p="00385" r="1.0" /&gt;</Value>
+                    <Name>BILL_0049</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Cuba" p="0053" r="1.0" /&gt;</Value>
+                    <Name>BILL_0050</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Cyprus" p="00357" r="1.0" /&gt;</Value>
+                    <Name>BILL_0051</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Czech Republic" p="00420" r="1.0" /&gt;</Value>
+                    <Name>BILL_0052</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Denmark" p="0045" r="1.0" /&gt;</Value>
+                    <Name>BILL_0053</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Diego Garcia" p="00246" r="1.0" /&gt;</Value>
+                    <Name>BILL_0054</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Djibouti" p="00253" r="1.0" /&gt;</Value>
+                    <Name>BILL_0055</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Dominica" p="001767" r="1.0" /&gt;</Value>
+                    <Name>BILL_0056</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Dominican Republic" p="001809" r="1.0" /&gt;</Value>
+                    <Name>BILL_0057</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Ecuador" p="00593" r="1.0" /&gt;</Value>
+                    <Name>BILL_0058</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Egypt" p="0020" r="1.0" /&gt;</Value>
+                    <Name>BILL_0059</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="El Salvador" p="00503" r="1.0" /&gt;</Value>
+                    <Name>BILL_0060</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Equatorial Guinea" p="00240" r="1.0" /&gt;</Value>
+                    <Name>BILL_0061</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Eritrea" p="00291" r="1.0" /&gt;</Value>
+                    <Name>BILL_0062</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Estonia" p="00372" r="1.0" /&gt;</Value>
+                    <Name>BILL_0063</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Ethiopia" p="00251" r="1.0" /&gt;</Value>
+                    <Name>BILL_0064</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Falkland Islands (Islas Malvinas)" p="00500" r="1.0" /&gt;</Value>
+                    <Name>BILL_0065</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Faroe Islands" p="00298" r="1.0" /&gt;</Value>
+                    <Name>BILL_0066</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Fiji Islands" p="00679" r="1.0" /&gt;</Value>
+                    <Name>BILL_0067</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Finland" p="00358" r="1.0" /&gt;</Value>
+                    <Name>BILL_0068</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="France" p="0033" r="1.0" /&gt;</Value>
+                    <Name>BILL_0069</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="French Antilles" p="00590" r="1.0" /&gt;</Value>
+                    <Name>BILL_0070</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="French Guiana" p="00594" r="1.0" /&gt;</Value>
+                    <Name>BILL_0071</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="French Polynesia" p="00689" r="1.0" /&gt;</Value>
+                    <Name>BILL_0072</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Gabon" p="00241" r="1.0" /&gt;</Value>
+                    <Name>BILL_0073</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Gambia, The" p="00220" r="1.0" /&gt;</Value>
+                    <Name>BILL_0074</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Georgia" p="00995" r="1.0" /&gt;</Value>
+                    <Name>BILL_0075</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Germany" p="0049" r="1.0" /&gt;</Value>
+                    <Name>BILL_0076</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Ghana" p="00233" r="1.0" /&gt;</Value>
+                    <Name>BILL_0077</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Gibraltar" p="00350" r="1.0" /&gt;</Value>
+                    <Name>BILL_0078</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Greece" p="0030" r="1.0" /&gt;</Value>
+                    <Name>BILL_0079</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Greenland" p="00299" r="1.0" /&gt;</Value>
+                    <Name>BILL_0080</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Grenada" p="001473" r="1.0" /&gt;</Value>
+                    <Name>BILL_0081</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Guam" p="001671" r="1.0" /&gt;</Value>
+                    <Name>BILL_0082</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Guatemala" p="00502" r="1.0" /&gt;</Value>
+                    <Name>BILL_0083</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Guinea" p="00224" r="1.0" /&gt;</Value>
+                    <Name>BILL_0084</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Guinea-Bissau" p="00245" r="1.0" /&gt;</Value>
+                    <Name>BILL_0085</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Guyana" p="00592" r="1.0" /&gt;</Value>
+                    <Name>BILL_0086</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Haiti" p="00509" r="1.0" /&gt;</Value>
+                    <Name>BILL_0087</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Honduras" p="00504" r="1.0" /&gt;</Value>
+                    <Name>BILL_0088</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Hong Kong SAR" p="00852" r="1.0" /&gt;</Value>
+                    <Name>BILL_0089</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Hungary" p="0036" r="1.0" /&gt;</Value>
+                    <Name>BILL_0090</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Iceland" p="00354" r="1.0" /&gt;</Value>
+                    <Name>BILL_0091</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="India" p="0091" r="1.0" /&gt;</Value>
+                    <Name>BILL_0092</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Indonesia" p="0062" r="1.0" /&gt;</Value>
+                    <Name>BILL_0093</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="INMARSAT" p="00870" r="1.0" /&gt;</Value>
+                    <Name>BILL_0094</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="INMARSAT (Atlantic-East)" p="00871" r="1.0" /&gt;</Value>
+                    <Name>BILL_0095</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="INMARSAT (Atlantic-West)" p="00874" r="1.0" /&gt;</Value>
+                    <Name>BILL_0096</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="INMARSAT (Indian)" p="00873" r="1.0" /&gt;</Value>
+                    <Name>BILL_0097</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="INMARSAT (Pacific)" p="00872" r="1.0" /&gt;</Value>
+                    <Name>BILL_0098</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="International Freephone Service" p="00800" r="1.0" /&gt;</Value>
+                    <Name>BILL_0099</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Iran" p="0098" r="1.0" /&gt;</Value>
+                    <Name>BILL_0100</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Iraq" p="00964" r="1.0" /&gt;</Value>
+                    <Name>BILL_0101</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Ireland" p="00353" r="1.0" /&gt;</Value>
+                    <Name>BILL_0102</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Israel" p="00972" r="1.0" /&gt;</Value>
+                    <Name>BILL_0103</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Italy" p="0039" r="1.0" /&gt;</Value>
+                    <Name>BILL_0104</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Jamaica" p="001876" r="1.0" /&gt;</Value>
+                    <Name>BILL_0105</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Japan" p="0081" r="1.0" /&gt;</Value>
+                    <Name>BILL_0106</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Jordan" p="00962" r="1.0" /&gt;</Value>
+                    <Name>BILL_0107</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Kenya" p="00254" r="1.0" /&gt;</Value>
+                    <Name>BILL_0108</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Kiribati" p="00686" r="1.0" /&gt;</Value>
+                    <Name>BILL_0109</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Korea" p="0082" r="1.0" /&gt;</Value>
+                    <Name>BILL_0110</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Kuwait" p="00965" r="1.0" /&gt;</Value>
+                    <Name>BILL_0111</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Kyrgyzstan" p="00996" r="1.0" /&gt;</Value>
+                    <Name>BILL_0112</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Laos" p="00856" r="1.0" /&gt;</Value>
+                    <Name>BILL_0113</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Latvia" p="00371" r="1.0" /&gt;</Value>
+                    <Name>BILL_0114</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Lebanon" p="00961" r="1.0" /&gt;</Value>
+                    <Name>BILL_0115</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Lesotho" p="00266" r="1.0" /&gt;</Value>
+                    <Name>BILL_0116</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Liberia" p="00231" r="1.0" /&gt;</Value>
+                    <Name>BILL_0117</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Libya" p="00218" r="1.0" /&gt;</Value>
+                    <Name>BILL_0118</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Liechtenstein" p="00423" r="1.0" /&gt;</Value>
+                    <Name>BILL_0119</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Lithuania" p="00370" r="1.0" /&gt;</Value>
+                    <Name>BILL_0120</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Luxembourg" p="00352" r="1.0" /&gt;</Value>
+                    <Name>BILL_0121</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Macao SAR" p="00853" r="1.0" /&gt;</Value>
+                    <Name>BILL_0122</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Macedonia, Former Yugoslav Republic of" p="00389" r="1.0" /&gt;</Value>
+                    <Name>BILL_0123</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Madagascar" p="00261" r="1.0" /&gt;</Value>
+                    <Name>BILL_0124</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Malawi" p="00265" r="1.0" /&gt;</Value>
+                    <Name>BILL_0125</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Malaysia" p="0060" r="1.0" /&gt;</Value>
+                    <Name>BILL_0126</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Maldives" p="00960" r="1.0" /&gt;</Value>
+                    <Name>BILL_0127</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Mali" p="00223" r="1.0" /&gt;</Value>
+                    <Name>BILL_0128</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Malta" p="00356" r="1.0" /&gt;</Value>
+                    <Name>BILL_0129</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Marshall Islands" p="00692" r="1.0" /&gt;</Value>
+                    <Name>BILL_0130</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Martinique" p="00596" r="1.0" /&gt;</Value>
+                    <Name>BILL_0131</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Mauritania" p="00222" r="1.0" /&gt;</Value>
+                    <Name>BILL_0132</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Mauritius" p="00230" r="1.0" /&gt;</Value>
+                    <Name>BILL_0133</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Mexico" p="0052" r="1.0" /&gt;</Value>
+                    <Name>BILL_0134</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Micronesia" p="00691" r="1.0" /&gt;</Value>
+                    <Name>BILL_0135</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Moldova" p="00373" r="1.0" /&gt;</Value>
+                    <Name>BILL_0136</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Monaco" p="00377" r="1.0" /&gt;</Value>
+                    <Name>BILL_0137</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Mongolia" p="00976" r="1.0" /&gt;</Value>
+                    <Name>BILL_0138</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Montserrat" p="001664" r="1.0" /&gt;</Value>
+                    <Name>BILL_0139</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Morocco" p="00212" r="1.0" /&gt;</Value>
+                    <Name>BILL_0140</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Mozambique" p="00258" r="1.0" /&gt;</Value>
+                    <Name>BILL_0141</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Myanmar" p="0095" r="1.0" /&gt;</Value>
+                    <Name>BILL_0142</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Namibia" p="00264" r="1.0" /&gt;</Value>
+                    <Name>BILL_0143</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Nauru" p="00674" r="1.0" /&gt;</Value>
+                    <Name>BILL_0144</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Nepal" p="00977" r="1.0" /&gt;</Value>
+                    <Name>BILL_0145</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Netherlands Antilles" p="00599" r="1.0" /&gt;</Value>
+                    <Name>BILL_0146</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Netherlands, The" p="0031" r="1.0" /&gt;</Value>
+                    <Name>BILL_0147</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="New Caledonia" p="00687" r="1.0" /&gt;</Value>
+                    <Name>BILL_0148</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="New Zealand" p="0064" r="1.0" /&gt;</Value>
+                    <Name>BILL_0149</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Nicaragua" p="00505" r="1.0" /&gt;</Value>
+                    <Name>BILL_0150</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Niger" p="00227" r="1.0" /&gt;</Value>
+                    <Name>BILL_0151</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Nigeria" p="00234" r="1.0" /&gt;</Value>
+                    <Name>BILL_0152</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Niue" p="00683" r="1.0" /&gt;</Value>
+                    <Name>BILL_0153</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Norfolk Island" p="00672" r="1.0" /&gt;</Value>
+                    <Name>BILL_0154</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="North Korea" p="00850" r="1.0" /&gt;</Value>
+                    <Name>BILL_0155</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Norway" p="0047" r="1.0" /&gt;</Value>
+                    <Name>BILL_0156</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Oman" p="00968" r="1.0" /&gt;</Value>
+                    <Name>BILL_0157</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Pakistan" p="0092" r="1.0" /&gt;</Value>
+                    <Name>BILL_0158</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Palau" p="00680" r="1.0" /&gt;</Value>
+                    <Name>BILL_0159</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Panama" p="00507" r="1.0" /&gt;</Value>
+                    <Name>BILL_0160</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Papua New Guinea" p="00675" r="1.0" /&gt;</Value>
+                    <Name>BILL_0161</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Paraguay" p="00595" r="1.0" /&gt;</Value>
+                    <Name>BILL_0162</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Peru" p="0051" r="1.0" /&gt;</Value>
+                    <Name>BILL_0163</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Philippines" p="0063" r="1.0" /&gt;</Value>
+                    <Name>BILL_0164</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Poland" p="0048" r="1.0" /&gt;</Value>
+                    <Name>BILL_0165</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Portugal" p="00351" r="1.0" /&gt;</Value>
+                    <Name>BILL_0166</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Puerto Rico" p="001787" r="1.0" /&gt;</Value>
+                    <Name>BILL_0167</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Qatar" p="00974" r="1.0" /&gt;</Value>
+                    <Name>BILL_0168</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Reunion" p="00262" r="1.0" /&gt;</Value>
+                    <Name>BILL_0169</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Romania" p="0040" r="1.0" /&gt;</Value>
+                    <Name>BILL_0170</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Russia" p="007" r="1.0" /&gt;</Value>
+                    <Name>BILL_0171</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Rwanda" p="00250" r="1.0" /&gt;</Value>
+                    <Name>BILL_0172</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Samoa" p="00685" r="1.0" /&gt;</Value>
+                    <Name>BILL_0173</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="San Marino" p="00378" r="1.0" /&gt;</Value>
+                    <Name>BILL_0174</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Sao Tome and Principe" p="00239" r="1.0" /&gt;</Value>
+                    <Name>BILL_0175</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Saudi Arabia" p="00966" r="1.0" /&gt;</Value>
+                    <Name>BILL_0176</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Senegal" p="00221" r="1.0" /&gt;</Value>
+                    <Name>BILL_0177</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Serbia and Montenegro" p="00381" r="1.0" /&gt;</Value>
+                    <Name>BILL_0178</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Seychelles" p="00248" r="1.0" /&gt;</Value>
+                    <Name>BILL_0179</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Sierra Leone" p="00232" r="1.0" /&gt;</Value>
+                    <Name>BILL_0180</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Singapore" p="0065" r="1.0" /&gt;</Value>
+                    <Name>BILL_0181</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Slovakia" p="00421" r="1.0" /&gt;</Value>
+                    <Name>BILL_0182</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Slovenia" p="00386" r="1.0" /&gt;</Value>
+                    <Name>BILL_0183</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Solomon Islands" p="00677" r="1.0" /&gt;</Value>
+                    <Name>BILL_0184</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Somalia" p="00252" r="1.0" /&gt;</Value>
+                    <Name>BILL_0185</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="South Africa" p="0027" r="1.0" /&gt;</Value>
+                    <Name>BILL_0186</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Spain" p="0034" r="1.0" /&gt;</Value>
+                    <Name>BILL_0187</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Sri Lanka" p="0094" r="1.0" /&gt;</Value>
+                    <Name>BILL_0188</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="St. Helena" p="00290" r="1.0" /&gt;</Value>
+                    <Name>BILL_0189</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="St. Kitts and Nevis" p="001869" r="1.0" /&gt;</Value>
+                    <Name>BILL_0190</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="St. Lucia" p="001758" r="1.0" /&gt;</Value>
+                    <Name>BILL_0191</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="St. Pierre and Miquelon" p="00508" r="1.0" /&gt;</Value>
+                    <Name>BILL_0192</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="St. Vincent and the Grenadines" p="001784" r="1.0" /&gt;</Value>
+                    <Name>BILL_0193</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Sudan" p="00249" r="1.0" /&gt;</Value>
+                    <Name>BILL_0194</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Suriname" p="00597" r="1.0" /&gt;</Value>
+                    <Name>BILL_0195</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Swaziland" p="00268" r="1.0" /&gt;</Value>
+                    <Name>BILL_0196</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Sweden" p="0046" r="1.0" /&gt;</Value>
+                    <Name>BILL_0197</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Switzerland" p="0041" r="1.0" /&gt;</Value>
+                    <Name>BILL_0198</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Syria" p="00963" r="1.0" /&gt;</Value>
+                    <Name>BILL_0199</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Taiwan" p="00886" r="1.0" /&gt;</Value>
+                    <Name>BILL_0200</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Tajikistan" p="00992" r="1.0" /&gt;</Value>
+                    <Name>BILL_0201</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Tanzania" p="00255" r="1.0" /&gt;</Value>
+                    <Name>BILL_0202</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Thailand" p="0066" r="1.0" /&gt;</Value>
+                    <Name>BILL_0203</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Timor-Leste" p="00670" r="1.0" /&gt;</Value>
+                    <Name>BILL_0204</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Togo" p="00228" r="1.0" /&gt;</Value>
+                    <Name>BILL_0205</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Tokelau" p="00690" r="1.0" /&gt;</Value>
+                    <Name>BILL_0206</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Tonga" p="00676" r="1.0" /&gt;</Value>
+                    <Name>BILL_0207</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Trinidad and Tobago" p="001868" r="1.0" /&gt;</Value>
+                    <Name>BILL_0208</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Tunisia" p="00216" r="1.0" /&gt;</Value>
+                    <Name>BILL_0209</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Turkey" p="0090" r="1.0" /&gt;</Value>
+                    <Name>BILL_0210</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Turkmenistan" p="00993" r="1.0" /&gt;</Value>
+                    <Name>BILL_0211</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Turks and Caicos Islands" p="001649" r="1.0" /&gt;</Value>
+                    <Name>BILL_0212</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Tuvalu" p="00688" r="1.0" /&gt;</Value>
+                    <Name>BILL_0213</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Uganda" p="00256" r="1.0" /&gt;</Value>
+                    <Name>BILL_0214</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Ukraine" p="00380" r="1.0" /&gt;</Value>
+                    <Name>BILL_0215</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="United Arab Emirates" p="00971" r="1.0" /&gt;</Value>
+                    <Name>BILL_0216</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="United Kingdom" p="0044" r="1.0" /&gt;</Value>
+                    <Name>BILL_0217</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="United States/Canada" p="001" r="1.0" /&gt;</Value>
+                    <Name>BILL_0218</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Uruguay" p="00598" r="1.0" /&gt;</Value>
+                    <Name>BILL_0219</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Uzbekistan" p="00998" r="1.0" /&gt;</Value>
+                    <Name>BILL_0220</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Vanuatu" p="00678" r="1.0" /&gt;</Value>
+                    <Name>BILL_0221</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Venezuela" p="0058" r="1.0" /&gt;</Value>
+                    <Name>BILL_0222</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Vietnam" p="0084" r="1.0" /&gt;</Value>
+                    <Name>BILL_0223</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Virgin Islands" p="001340" r="1.0" /&gt;</Value>
+                    <Name>BILL_0224</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Virgin Islands, British" p="001284" r="1.0" /&gt;</Value>
+                    <Name>BILL_0225</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Wallis and Futuna" p="00681" r="1.0" /&gt;</Value>
+                    <Name>BILL_0226</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Yemen" p="00967" r="1.0" /&gt;</Value>
+                    <Name>BILL_0227</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Zambia" p="00260" r="1.0" /&gt;</Value>
+                    <Name>BILL_0228</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>String</Type>
+                    <Value>&lt;b n="Zimbabwe" p="00263" r="1.0" /&gt;</Value>
+                    <Name>BILL_0229</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>Int32</Type>
+                    <Value>229</Value>
+                    <Name>BILLENTRIES</Name>
+                </TenantProperty>
+                <TenantProperty>
+                    <Type>Int32</Type>
+                    <Value>1</Value>
+                    <Name>USE_PHONEBOOK_SUBST</Name>
+                </TenantProperty>
+%%BLACKLISTXML%%
+            </Properties>
+            <Hours HoursType="SpecificHoursExcludingHolidays" />
+            <BreakTime HoursType="SpecificHoursExcludingHolidays" />
+            <Groups>
+                <Group>
+                    <Name>ELASTIX</Name>
+                    <Roles><role name="managers"><allowToManageCompanyBook>false</allowToManageCompanyBook><allowToChangePresence>true</allowToChangePresence><canSeeGroupMembers>true</canSeeGroupMembers><canSeeGroupCalls>true</canSeeGroupCalls><showMyPresence>true</showMyPresence><showMyPresenceOutside>false</showMyPresenceOutside><showMyCalls>true</showMyCalls><performOperations>true</performOperations><canBargeIn>true</canBargeIn><canIntercom>true</canIntercom><allowParking>true</allowParking><allowIVR>true</allowIVR></role><role name="users"><allowToManageCompanyBook>false</allowToManageCompanyBook><allowToChangePresence>false</allowToChangePresence><canSeeGroupMembers>true</canSeeGroupMembers><canSeeGroupCalls>true</canSeeGroupCalls><showMyPresence>true</showMyPresence><showMyPresenceOutside>false</showMyPresenceOutside><showMyCalls>true</showMyCalls><performOperations>false</performOperations><canBargeIn>false</canBargeIn><canIntercom>false</canIntercom><allowParking>false</allowParking><allowIVR>false</allowIVR></role></Roles>
+                    <Members>
+%%GROUP_MEMBERS%%                    </Members>
+                </Group>
+            </Groups>
+            <OutboundRules>
+%%OUTBOUNDRULESXML%%
+            </OutboundRules>
+            <DN>
+                <ParkExtension>
+                    <Number>*0</Number>
+                    <Properties>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Block derect calls from IVR</Description>
+                            <Value>0</Value>
+                            <Name>DIRECT_FROM_IVR</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Blocks an extension from being registered outside the network</Description>
+                            <Value>1</Value>
+                            <Name>ALLOW_LAN_ONLY</Name>
+                        </DNProperty>
+                    </Properties>
+                </ParkExtension>
+                <ParkExtension>
+                    <Number>*1</Number>
+                    <Properties>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Block derect calls from IVR</Description>
+                            <Value>0</Value>
+                            <Name>DIRECT_FROM_IVR</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Blocks an extension from being registered outside the network</Description>
+                            <Value>1</Value>
+                            <Name>ALLOW_LAN_ONLY</Name>
+                        </DNProperty>
+                    </Properties>
+                </ParkExtension>
+                <ParkExtension>
+                    <Number>*777</Number>
+                    <Properties>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Block derect calls from IVR</Description>
+                            <Value>0</Value>
+                            <Name>DIRECT_FROM_IVR</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Blocks an extension from being registered outside the network</Description>
+                            <Value>1</Value>
+                            <Name>ALLOW_LAN_ONLY</Name>
+                        </DNProperty>
+                    </Properties>
+                </ParkExtension>
+                <ParkExtension>
+                    <Number>*888</Number>
+                    <Properties>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Block derect calls from IVR</Description>
+                            <Value>0</Value>
+                            <Name>DIRECT_FROM_IVR</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Blocks an extension from being registered outside the network</Description>
+                            <Value>1</Value>
+                            <Name>ALLOW_LAN_ONLY</Name>
+                        </DNProperty>
+                    </Properties>
+                </ParkExtension>
+                <ParkExtension>
+                    <Number>SP0</Number>
+                    <Properties>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Block derect calls from IVR</Description>
+                            <Value>0</Value>
+                            <Name>DIRECT_FROM_IVR</Name>
+                        </DNProperty>
+                    </Properties>
+                </ParkExtension>
+                <ParkExtension>
+                    <Number>SP1</Number>
+                    <Properties>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Block derect calls from IVR</Description>
+                            <Value>0</Value>
+                            <Name>DIRECT_FROM_IVR</Name>
+                        </DNProperty>
+                    </Properties>
+                </ParkExtension>
+                <ParkExtension>
+                    <Number>SP2</Number>
+                    <Properties>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Block derect calls from IVR</Description>
+                            <Value>0</Value>
+                            <Name>DIRECT_FROM_IVR</Name>
+                        </DNProperty>
+                    </Properties>
+                </ParkExtension>
+                <ParkExtension>
+                    <Number>SP3</Number>
+                    <Properties>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Block derect calls from IVR</Description>
+                            <Value>0</Value>
+                            <Name>DIRECT_FROM_IVR</Name>
+                        </DNProperty>
+                    </Properties>
+                </ParkExtension>
+                <ParkExtension>
+                    <Number>SP4</Number>
+                    <Properties>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Block derect calls from IVR</Description>
+                            <Value>0</Value>
+                            <Name>DIRECT_FROM_IVR</Name>
+                        </DNProperty>
+                    </Properties>
+                </ParkExtension>
+                <ParkExtension>
+                    <Number>SP5</Number>
+                    <Properties>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Block derect calls from IVR</Description>
+                            <Value>0</Value>
+                            <Name>DIRECT_FROM_IVR</Name>
+                        </DNProperty>
+                    </Properties>
+                </ParkExtension>
+                <ParkExtension>
+                    <Number>SP6</Number>
+                    <Properties>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Block derect calls from IVR</Description>
+                            <Value>0</Value>
+                            <Name>DIRECT_FROM_IVR</Name>
+                        </DNProperty>
+                    </Properties>
+                </ParkExtension>
+                <ParkExtension>
+                    <Number>SP7</Number>
+                    <Properties>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Block derect calls from IVR</Description>
+                            <Value>0</Value>
+                            <Name>DIRECT_FROM_IVR</Name>
+                        </DNProperty>
+                    </Properties>
+                </ParkExtension>
+                <ParkExtension>
+                    <Number>SP8</Number>
+                    <Properties>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Block derect calls from IVR</Description>
+                            <Value>0</Value>
+                            <Name>DIRECT_FROM_IVR</Name>
+                        </DNProperty>
+                    </Properties>
+                </ParkExtension>
+                <ParkExtension>
+                    <Number>SP9</Number>
+                    <Properties>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Block derect calls from IVR</Description>
+                            <Value>0</Value>
+                            <Name>DIRECT_FROM_IVR</Name>
+                        </DNProperty>
+                    </Properties>
+                </ParkExtension>
+                <ParkExtension>
+                    <Number>SP10</Number>
+                    <Properties>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Block derect calls from IVR</Description>
+                            <Value>0</Value>
+                            <Name>DIRECT_FROM_IVR</Name>
+                        </DNProperty>
+                    </Properties>
+                </ParkExtension>
+                <IVR>
+                    <TimeoutForwardType>EndCall</TimeoutForwardType>
+                    <Timeout>1</Timeout>
+                    <UseMSExchange>False</UseMSExchange>
+                    <PromptFilename>OfficeClosed.wav</PromptFilename>
+                    <Name>Out of office IVR</Name>
+                    <Number>HOL</Number>
+                    <Properties>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Block derect calls from IVR</Description>
+                            <Value>0</Value>
+                            <Name>DIRECT_FROM_IVR</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Blocks an extension from being registered outside the network</Description>
+                            <Value>1</Value>
+                            <Name>ALLOW_LAN_ONLY</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Specifies if this Ivr has Holiday Service enabled</Description>
+                            <Value>1</Value>
+                            <Name>ENABLE_HOLIDAYSERVICEIVR</Name>
+                        </DNProperty>
+                    </Properties>
+                </IVR>
+                <IVR>
+                    <TimeoutForwardType>EndCall</TimeoutForwardType>
+                    <Timeout>1</Timeout>
+                    <UseMSExchange>False</UseMSExchange>
+                    <PromptFilename> </PromptFilename>
+                    <Name>PIN Protect IVR</Name>
+                    <Number>%%PINPROTECT%%</Number>
+                    <Properties>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Value>0</Value>
+                            <Name>DIRECT_FROM_IVR</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Blocks an extension from being registered outside the network</Description>
+                            <Value>1</Value>
+                            <Name>ALLOW_LAN_ONLY</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>PIN protect IVR</Description>
+                            <Value>1</Value>
+                            <Name>PINPROTECTIONIVR</Name>
+                        </DNProperty>
+                    </Properties>
+                </IVR>
+%%IVRXML%%
+%%TRUNKS2XML%%
+                <FaxExtension>
+                    <AuthPassword>%%FAXPWD%%</AuthPassword>
+                    <AuthID>%%FAXOVEREMAILGATEWAY%%</AuthID>
+                    <Number>%%FAXOVEREMAILGATEWAY%%</Number>
+                </FaxExtension>
+                <SpecialMenu>
+                    <Number>%%SPECIALMENU%%</Number>
+                </SpecialMenu>
+                <ConferencePlaceExtension>
+                    <IsGateway>True</IsGateway>
+                    <Number>%%CONFEXT%%</Number>
+                    <Properties>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Blocks an extension from being registered outside the network</Description>
+                            <Value>1</Value>
+                            <Name>ALLOW_LAN_ONLY</Name>
+                        </DNProperty>
+                    </Properties>
+                </ConferencePlaceExtension>
+                %%EXTXML%%
+            </DN>
+        </Tenant>
+    </Tenants>
+</PhoneSystem>

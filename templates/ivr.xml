@@ -1,0 +1,44 @@
+                <IVR>
+                    <TimeoutForwardType>%%IVR_TIMEOUT_TYPE%%</TimeoutForwardType>
+                    <Timeout>%%IVR_TIMEOUT%%</Timeout>
+                    <UseMSExchange>False</UseMSExchange>
+                    <PromptFilename>%%IVR_PROMPT%%</PromptFilename>
+                    <Name>%%IVR_NAME%%</Name>
+                    <Number>%%IVR_VNUM%%</Number>
+                    <Properties>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Blocks an extension from being registered outside the network</Description>
+                            <Value>1</Value>
+                            <Name>ALLOW_LAN_ONLY</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>Allows direct call from IVR</Description>
+                            <Value>1</Value>
+                            <Name>DIRECT_FROM_IVR</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>PromptSet folder</Description>
+                            <Value>%%IVR_PROMPTSETID%%</Value>
+                            <Name>PROMPTSETID</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>PromptSet name</Description>
+                            <Value>%%IVR_PROMPTSETNAME%%</Value>
+                            <Name>PROMPTSETNAME</Name>
+                        </DNProperty>
+                        <DNProperty>
+                            <Type>String</Type>
+                            <Description>When an invalid key press is pressed in a digital Receptionist transfer to some destination</Description>
+                            <Value>%%IVR_INVALID%%</Value>
+                            <Name>REDIRECT_UNKNOWN_TO</Name>
+                        </DNProperty>
+                    </Properties>
+                    <Forwards>
+%%IVRDTMFXML%%
+                    </Forwards>
+                    <TimeoutForwardDN>%%IVR_TIMEOUT_DEST%%</TimeoutForwardDN>
+                </IVR>

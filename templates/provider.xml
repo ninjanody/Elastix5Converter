@@ -1,0 +1,52 @@
+        <VoipProvider>
+            <IPInRegistrationContact>External</IPInRegistrationContact>
+            <TimeBetweenReg>0</TimeBetweenReg>
+            <StunServerPort>0</StunServerPort>
+            <ProxyPort>5060</ProxyPort>
+            <VariableChoices />
+            <MatchingStrategy>MatchAllFields</MatchingStrategy>
+            <DestNumberInRemotePartyIDCalled>False</DestNumberInRemotePartyIDCalled>
+            <DestNumberInRequestLineURI>True</DestNumberInRequestLineURI>
+            <DestNumberInTo>True</DestNumberInTo>
+            <Type>Provider</Type>
+            <RequireRegistrationFor>InOutCalls</RequireRegistrationFor>
+            <UseIPInContact>True</UseIPInContact>
+            <SupportReplaces>False</SupportReplaces>
+            <SupportReinvite>False</SupportReinvite>
+            <EnableSRTP>False</EnableSRTP>
+            <DeliverAudio>True</DeliverAudio>
+            <Internal>True</Internal>
+            <Lines>0</Lines>
+            <Port>%%TRUNK_PORT%%</Port>
+            <Host>%%TRUNK_HOST%%</Host>
+            <Name>%%TRUNK_NAME%%</Name>
+            <TemplateFilename>GenericVoIPProvider.pv.xml</TemplateFilename>
+            <Codecs>
+                <codec RFCName="PCMU" />
+                <codec RFCName="PCMA" />
+                <codec RFCName="GSM" />
+            </Codecs>
+            <ArrayOfInboundParam>
+                <InboundParam ParamName="FromUserPart" ValueName="$CallerNum" />
+                <InboundParam ParamName="ToDisplayName" ValueName="$CalledName" />
+                <InboundParam ParamName="ToUserPart" ValueName="$CalledNum" />
+                <InboundParam ParamName="FromDisplayName" ValueName="$CallerName" />
+                <InboundParam ParamName="ContactHost" ValueName="$DevHostPort" />
+            </ArrayOfInboundParam>
+            <ArrayOfOutboundParam>
+                <OutboundParam ParamName="RequestLineURIUser" ValueName="$CalledNum" />
+                <OutboundParam ParamName="RequestLineURIHost" ValueName="$GWHostPort" />
+                <OutboundParam ParamName="ContactUser" ValueName="$AuthID" />
+                <OutboundParam ParamName="ContactHost" ValueName="$ContactUri" />
+                <OutboundParam ParamName="ToDisplayName" ValueName="$CalledName" />
+                <OutboundParam ParamName="ToUserPart" ValueName="$CalledNum" />
+                <OutboundParam ParamName="ToHostPart" ValueName="$GWHostPort" />
+                <OutboundParam ParamName="FromDisplayName" ValueName="$OutboundCallerId" />
+                <OutboundParam ParamName="FromUserPart" ValueName="$AuthID" />
+                <OutboundParam ParamName="FromHostPart" ValueName="$GWHostPort" />
+                <OutboundParam ParamName="RemotePartyIDCallingPartyDisplayName" ValueName="$OutboundCallerId" />
+                <OutboundParam ParamName="RemotePartyIDCallingPartyUserPart" ValueName="$OutboundCallerId" />
+                <OutboundParam ParamName="RemotePartyIDCallingPartyHostPart" ValueName="$GWHostPort" />
+            </ArrayOfOutboundParam>
+            <SIPFieldWithDID Name="ToUserPart" />
+        </VoipProvider>
